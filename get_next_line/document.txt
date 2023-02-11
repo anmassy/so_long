@@ -1,0 +1,12 @@
+bonjour,
+je suis en train de tester mon get_next_line, je regarde si il prend tous les cas en compte.
+comme par exemple un espace vide :
+
+une ligne a un seule charactere :
+u
+une phrase random :
+je suis le plus beau !
+une ligne avec plein d'espace :
+                     
+et enfin de la merde :
+gdzfgsr2j1se684 68g5h4 5x8s42r j6r24s 3sr sr3gj 352
