@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/13 14:47:37 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/18 13:01:06 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,18 @@
 // void	*mlx_new_image(void *mlx_ptr,int width,int height);
 
 // void	*mlx_xpm_file_to_image(void *mlx_ptr, char *filename, int *width, int *height);
+
+int main(void)
+{
+	char	**map;
+	int	i;
+
+	map = convert_map();
+	if (!check_connecting(map) || !check_entry(map) || !check_exit(map)
+		|| !map_is_rectangular(map) || !check_value(map) || !check_wall(map))
+	{
+		printf("error");
+		return (0);
+	}
+	return (0);
+}
