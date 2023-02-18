@@ -6,11 +6,12 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:59:57 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/18 13:01:57 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/18 13:27:25 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line/get_next_line.h"
+#include "../get_next_line/get_next_line.h"
+#include "../include/so_long.h"
 
 int	check_entry(char **map)
 {
