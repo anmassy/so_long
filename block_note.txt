@@ -1,0 +1,30 @@
+
+recuperer la map dans un fichier a l'aide de gnl et l'introduire dans un tableau afin de pouvoir effctuer les different check
+
+check si la map est rectangle//
+check si la map contient C, P et E //
+check si la map est entourer de mur //
+check si on peut aller du P au E en prenant tous les connectives (resoudre le jeu) flood fill -> a faire en dernier !
+check si c'est un .ber //
+check si le fichier n'est pas vide
+
+
+exemple de map la plus petite :
+
+11111
+1CEP1
+11111
+
+111
+1C1
+1E1
+1P1
+111
+
+
+design :
+
+decouper l'image
+rogne 40*40
+superposer les images
+convertir en xpm

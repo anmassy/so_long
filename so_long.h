@@ -6,13 +6,17 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/01/17 16:21:56 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:11:06 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-int	main(void);
+typedef struct s_list
+{
+	char			**map;
+}				t_list;
+
 
 #endif

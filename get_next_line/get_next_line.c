@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:04:35 by anmassy           #+#    #+#             */
-/*   Updated: 2022/11/30 17:50:26 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/13 10:33:43 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,16 +52,16 @@ char	*get_next_line(int fd)
 	return (free(buffer), line);
 }
 
-int	main(void)
-{
-	int		fd;
-	char	*line;
+// int	main(void)
+// {
+// 	int		fd;
+// 	char	*line;
 
-	fd = open("document.txt", O_RDONLY);
-	while (line = get_next_line(fd))
-	{
-		printf("%s\n", line);
-		free(line);
-	}
-	return (0);
-}
+// 	fd = open("document.txt", O_RDONLY);
+// 	while (line = get_next_line(fd))
+// 	{
+// 		printf("%s\n", line);
+// 		free(line);
+// 	}
+// 	return (0);
+// }
