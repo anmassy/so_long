@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/18 13:14:47 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/18 14:49:52 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	check_wall(char **map);
 
 int	len_doc();
 char	**convert_map();
+int	ft_strcmp(char *s1, char *s2);
 int	check_file(char *av);
 
 int	check_entry(char **map);

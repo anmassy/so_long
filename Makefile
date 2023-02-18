@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/02/18 13:32:30 by anmassy          ###   ########.fr        #
+#    Updated: 2023/02/18 15:12:02 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,8 @@ all : $(NAME)
 	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(MAKE) -C mlx
-	$(CC) $(CFLAGS) $(INCS) $(MLX_FLAG) -o $(NAME) $(OBJ) $(LIBC) mlx/libmlx.a
+	@$(MAKE) -C mlx >/dev/null 2>&1
+	@$(CC) $(CFLAGS) $(INCS) $(MLX_FLAG) -o $(NAME) $(OBJ) $(LIBC) mlx/libmlx.a
 
 clean :
 	$(RM) $(OBJ)
