@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:59:57 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/18 13:27:25 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 12:01:15 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_entry(char **map)
 	}
 	if (count != 1)
 		return (0);
-	return (1);
+	return (count);
 }
 
 int	check_exit(char **map)
@@ -58,7 +58,7 @@ int	check_exit(char **map)
 	}
 	if (count != 1)
 		return (0);
-	return (1);
+	return (count);
 }
 
 int	check_connecting(char **map)
@@ -82,7 +82,7 @@ int	check_connecting(char **map)
 	}
 	if (count == 0)
 		return (0);
-	return (1);
+	return (count);
 }
 
 int	check_value(char **map)
@@ -103,5 +103,12 @@ int	check_value(char **map)
 		}
 		i++;
 	}
+	return (1);
+}
+
+int	valid_map(char **map, t_player *val)
+{
+	if (val->coll != check_connecting(map) || val->exit != check_exit(map))
+		return (0);
 	return (1);
 }

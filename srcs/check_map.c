@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/18 13:27:12 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 12:16:36 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	map_is_rectangular(char	**map)
 	return (1);
 }
 
-int	check_wall(char **map)
+int	check_wall(char **map, char *av)
 {
 	int	line;
 	int	i;
@@ -61,7 +61,7 @@ int	check_wall(char **map)
 			return (0);
 		line++;
 	}
-	line = len_doc();
+	line = len_doc(av);
 	i = 0;
 	while (map[line][i] && map[line][i] != '\n')
 	{
@@ -72,3 +72,42 @@ int	check_wall(char **map)
 	return (1);
 }
 
+
+void co_player(char **map, t_player *val)
+{
+	val->x = 0;
+	while (map[val->x])
+	{
+		val->y = 0;
+		while (map[val->x][val->y])
+		{
+			val->y++;
+			if (map[val->x][val->y] == 'P')
+				return ;
+		}
+		val->x++;
+	}
+}
+
+void	fill(char **map, int x, int y, t_player *val)
+{
+	if (map[x][y] == '1' || map[x][y] != 'F')
+		return ;
+	if (map[x][y] != 'C')
+		val->coll++;
+	if (map[x][y] != 'E')
+		val->exit++;
+	map[x][y] = 'F';
+	fill(map, x - 1, y, val);
+	fill(map, x + 1, y, val);
+	fill(map, x, y - 1, val);
+	fill(map, x, y + 1, val);
+}
+
+void	flood_fill(char **map, t_player *val)
+{
+	val->coll = 0;
+	val->exit = 0;
+	co_player(map, val);
+	fill(map, val->x, val->y, val);	
+}
