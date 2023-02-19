@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:57:28 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 12:08:45 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 13:38:29 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int	len_doc(char *av)
 	return (len);
 }
 
-char	**convert_map(char *av)
+void	convert_map(t_player *val, char *av)
 {
-	char	**map;
 	int		fd;
 	char	*line;
 	int		len;
@@ -40,20 +39,19 @@ char	**convert_map(char *av)
 	
 	i = 0;
 	len = len_doc(av);
-	map = (char **)malloc((len + 1) * sizeof(char*));
-	if (!map)
-		return (NULL);
+	val->map = (char **)malloc((len + 1) * sizeof(char*));
+	if (!val->map)
+		return ;
 	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		map[i] = line;
+		val->map[i] = line;
 		i++;
 		line = get_next_line(fd);
 	}
-	map[i] = NULL;
+	val->map[i] = NULL;
 	close(fd);
-	return (map);
 }
 
 int	ft_strcmp(char *s1, char *s2)

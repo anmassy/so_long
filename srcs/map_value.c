@@ -6,14 +6,14 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:59:57 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 12:01:15 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 13:34:23 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line/get_next_line.h"
 #include "../include/so_long.h"
 
-int	check_entry(char **map)
+int	check_entry(t_player *val)
 {
 	int	i;
 	int	j;
@@ -21,12 +21,12 @@ int	check_entry(char **map)
 
 	i = 0;
 	count = 0;
-	while (map[i])
+	while (val->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (val->map[i][j])
 		{
-			if (map[i][j] == 'E')
+			if (val->map[i][j] == 'E')
 				count++;
 			j++;
 		}
@@ -34,10 +34,10 @@ int	check_entry(char **map)
 	}
 	if (count != 1)
 		return (0);
-	return (count);
+	return (1);
 }
 
-int	check_exit(char **map)
+int	check_exit(t_player *val)
 {
 	int	i;
 	int	j;
@@ -45,12 +45,12 @@ int	check_exit(char **map)
 
 	i = 0;
 	count = 0;
-	while (map[i])
+	while (val->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (val->map[i][j])
 		{
-			if (map[i][j] == 'P')
+			if (val->map[i][j] == 'P')
 				count++;
 			j++;
 		}
@@ -58,46 +58,44 @@ int	check_exit(char **map)
 	}
 	if (count != 1)
 		return (0);
-	return (count);
+	return (1);
 }
 
-int	check_connecting(char **map)
+int	check_connecting(t_player *val)
 {
 	int	i;
 	int	j;
-	int count;
 
 	i = 0;
-	count = 0;
-	while (map[i])
+	while (val->map[i])
 	{
 		j = 0;
-		while (map[i][j])
+		while (val->map[i][j])
 		{
-			if (map[i][j] == 'C')
-				count++;
+			if (val->map[i][j] == 'C')
+				val->count++;
 			j++;
 		}
 		i++;
 	}
-	if (count == 0)
+	if (val->count == 0)
 		return (0);
-	return (count);
+	return (1);
 }
 
-int	check_value(char **map)
+int	check_value(t_player *val)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (map[i])
+	while (val->map[i])
 	{
 		j = 0;
-		while (map[i][j] && map[i][j] != '\n')
+		while (val->map[i][j] && val->map[i][j] != '\n')
 		{
-			if (map[i][j] != '1' && map[i][j] != '0' && map[i][j] != 'E'
-				&& map[i][j] != 'P' && map[i][j] != 'C')
+			if (val->map[i][j] != '1' && val->map[i][j] != '0' && val->map[i][j] != 'E'
+				&& val->map[i][j] != 'P' && val->map[i][j] != 'C')
 				return (0);
 			j++;
 		}
@@ -106,9 +104,9 @@ int	check_value(char **map)
 	return (1);
 }
 
-int	valid_map(char **map, t_player *val)
+int	valid_map(t_player *val)
 {
-	if (val->coll != check_connecting(map) || val->exit != check_exit(map))
+	if (val->coll != val->count || val->exit != 1)
 		return (0);
 	return (1);
 }

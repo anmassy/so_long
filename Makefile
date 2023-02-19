@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/02/19 11:59:20 by anmassy          ###   ########.fr        #
+#    Updated: 2023/02/19 12:36:41 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ SRC =	srcs/check_map.c \
 		srcs/convert_map.c \
 		srcs/map_value.c \
 		srcs/global_check.c \
-		main.c \
 		get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c
+		get_next_line/get_next_line_utils.c \
+		main.c
 
 OBJ = $(SRC:.c=.o)
 

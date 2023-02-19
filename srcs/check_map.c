@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 12:16:36 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 13:37:40 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ int	len_line(char *s)
 	return (len);
 }
 
-int	map_is_rectangular(char	**map)
+int	map_is_rectangular(t_player *val)
 {
 	int	first_line;
 	int	next_line;
 	int	line;
 
-	first_line = len_line(map[0]);
+	first_line = len_line(val->map[0]);
 	line = 1;
-	while (map[line])
+	while (val->map[line])
 	{
-		next_line = len_line(map[line]);
+		next_line = len_line(val->map[line]);
 		if (next_line != first_line)
 			return (0);
 		line++;
@@ -41,31 +41,31 @@ int	map_is_rectangular(char	**map)
 	return (1);
 }
 
-int	check_wall(char **map, char *av)
+int	check_wall(t_player *val, char *av)
 {
 	int	line;
 	int	i;
 
 	line = 1;
 	i = 0;
-	while (map[0][i] && map[0][i] != '\n')
+	while (val->map[0][i] && val->map[0][i] != '\n')
 	{
-		if (map[0][i] != '1')
+		if (val->map[0][i] != '1')
 			return (0);
 		i++;
 	}
-	i = len_line(map[line]);
-	while (map[line])
+	i = len_line(val->map[line]);
+	while (val->map[line])
 	{
-		if (map[line][0] != '1' && map[line][i] != '1')
+		if (val->map[line][0] != '1' && val->map[line][i] != '1')
 			return (0);
 		line++;
 	}
 	line = len_doc(av);
 	i = 0;
-	while (map[line][i] && map[line][i] != '\n')
+	while (val->map[line][i] && val->map[line][i] != '\n')
 	{
-		if (map[line][i] != '1')
+		if (val->map[line][i] != '1')
 			return (0);
 		i++;
 	}
@@ -73,41 +73,39 @@ int	check_wall(char **map, char *av)
 }
 
 
-void co_player(char **map, t_player *val)
+void co_player(t_player *val)
 {
 	val->x = 0;
-	while (map[val->x])
+	while (val->map[val->x])
 	{
 		val->y = 0;
-		while (map[val->x][val->y])
+		while (val->map[val->x][val->y])
 		{
 			val->y++;
-			if (map[val->x][val->y] == 'P')
+			if (val->map[val->x][val->y] == 'P')
 				return ;
 		}
 		val->x++;
 	}
 }
 
-void	fill(char **map, int x, int y, t_player *val)
+void	fill(int x, int y, t_player *val)
 {
-	if (map[x][y] == '1' || map[x][y] != 'F')
+	if (val->map[x][y] == '1' || val->map[x][y] == 'F')
 		return ;
-	if (map[x][y] != 'C')
+	if (val->map[x][y] == 'C')
 		val->coll++;
-	if (map[x][y] != 'E')
+	if (val->map[x][y] == 'E')
 		val->exit++;
-	map[x][y] = 'F';
-	fill(map, x - 1, y, val);
-	fill(map, x + 1, y, val);
-	fill(map, x, y - 1, val);
-	fill(map, x, y + 1, val);
+	val->map[x][y] = 'F';
+	fill(x - 1, y, val);
+	fill(x + 1, y, val);
+	fill(x, y - 1, val);
+	fill(x, y + 1, val);
 }
 
-void	flood_fill(char **map, t_player *val)
+void	flood_fill(t_player *val)
 {
-	val->coll = 0;
-	val->exit = 0;
-	co_player(map, val);
-	fill(map, val->x, val->y, val);	
+	co_player(val);
+	fill(val->x, val->y, val);	
 }
