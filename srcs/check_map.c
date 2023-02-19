@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 13:37:40 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:27:02 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,23 @@ int	map_is_rectangular(t_player *val)
 	return (1);
 }
 
+int	count_line(char *av)
+{
+	int	len;
+	char	c;
+	int fd;
+
+	len = 0;
+	fd = open (av, O_RDONLY);
+	while (read (fd, &c, 1) > 0)
+	{
+		if (c == '\n')
+			len++;
+	}
+	close(fd);
+	return (len);
+}
+
 int	check_wall(t_player *val, char *av)
 {
 	int	line;
@@ -61,9 +78,9 @@ int	check_wall(t_player *val, char *av)
 			return (0);
 		line++;
 	}
-	line = len_doc(av);
+	line = count_line(av);
 	i = 0;
-	while (val->map[line][i] && val->map[line][i] != '\n')
+	while (val->map[line] && val->map[line][i] && val->map[line][i] != '\n')
 	{
 		if (val->map[line][i] != '1')
 			return (0);

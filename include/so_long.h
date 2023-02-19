@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 13:38:49 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:26:51 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ typedef struct	s_player
 	char	**map;
 }				t_player;
 
+
+int	count_line(char *av);
 int		len_line(char *s);
 int		map_is_rectangular(t_player *val);
 int		check_wall(t_player *val, char *av);
@@ -44,5 +46,8 @@ int		valid_map(t_player *val);
 
 int		full_check(char **av, t_player *val);
 int		solved_map(t_player *val);
+
+void	display_map(t_player *val);
+void	free_all(t_player *val);
 
 #endif

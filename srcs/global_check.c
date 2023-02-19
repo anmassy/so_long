@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:36:11 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 13:32:57 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 16:51:27 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ int	solved_map(t_player *val)
 	else
 		return (0);
 	return (1);
+}
+
+void	free_all(t_player *val)
+{
+	int	i;
+
+	i = 0;
+	while (val->map[i])
+		free(val->map[i++]);
+	free(val->map);
 }

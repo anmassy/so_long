@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/02/19 12:36:41 by anmassy          ###   ########.fr        #
+#    Updated: 2023/02/19 17:03:12 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRC =	srcs/check_map.c \
 		srcs/convert_map.c \
 		srcs/map_value.c \
 		srcs/global_check.c \
+		srcs/display.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		main.c
@@ -22,7 +23,7 @@ OBJ = $(SRC:.c=.o)
 
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 
 INCS = -I ./include -I ./mlx
@@ -32,18 +33,18 @@ MLX_FLAG = -lXext -lX11 -lm -lz
 all : $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCS) -c $< -o $@
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(NAME): $(OBJ)
 	@$(MAKE) -C mlx >/dev/null 2>&1
 	@$(CC) $(CFLAGS) $(INCS) $(MLX_FLAG) -o $(NAME) $(OBJ) $(LIBC) mlx/libmlx.a
 
 clean :
-	$(RM) $(OBJ)
-	$(MAKE) -C mlx clean
+	@$(RM) $(OBJ) >/dev/null
+	@$(MAKE) -C mlx clean >/dev/null
 
 fclean : clean
-	$(RM) $(NAME)
+	@$(RM) $(NAME) >/dev/null
 
 re : fclean all
 

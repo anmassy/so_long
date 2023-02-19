@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:57:28 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 13:38:29 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:13:10 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	len_doc(char *av)
 	char	c;
 	int fd;
 
-	len = 0;
+	len = 1;
 	fd = open (av, O_RDONLY);
 	while (read (fd, &c, 1) > 0)
 	{

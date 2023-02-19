@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 13:39:05 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:29:07 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_player	*init_struct()
 	val->coll = 0;
 	val->exit = 0;
 	val->count = 0;
+	val->map = NULL;
 	return (val);
 }
 
@@ -49,6 +50,7 @@ int main(int ac, char **av)
 	if (!full_check(av, val))
 		return (0);
 	solved_map(val);
-	// map = convert_map(av[1]);
+	free_all(val);
+	convert_map(val, av[1]);
 	return (0);
 }
