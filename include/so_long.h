@@ -6,29 +6,29 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 17:26:51 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:44:32 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-#include <stdio.h>
+# include <stdio.h>
 
-typedef struct	s_player
+typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	coll;
-	int	exit;
-	int	count;
+	int		x;
+	int		y;
+	int		coll;
+	int		exit;
+	int		count;
 	char	**map;
 }				t_player;
 
-
-int	count_line(char *av);
+int		count_line(char *av);
 int		len_line(char *s);
 int		map_is_rectangular(t_player *val);
 int		check_wall(t_player *val, char *av);
+
 void	co_player(t_player *val);
 void	fill(int x, int y, t_player *val);
 void	flood_fill(t_player *val);
@@ -46,8 +46,8 @@ int		valid_map(t_player *val);
 
 int		full_check(char **av, t_player *val);
 int		solved_map(t_player *val);
+void	free_all(t_player *val);
 
 void	display_map(t_player *val);
-void	free_all(t_player *val);
 
 #endif

@@ -6,17 +6,17 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 17:29:07 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:46:00 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "include/so_long.h"
 
-t_player	*init_struct()
+t_player	*init_struct(void)
 {
 	t_player	*val;
-	
+
 	val = malloc(sizeof(t_player));
 	val->x = 0;
 	val->y = 0;
@@ -27,7 +27,7 @@ t_player	*init_struct()
 	return (val);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int			fd;
 	char		c;
@@ -52,5 +52,7 @@ int main(int ac, char **av)
 	solved_map(val);
 	free_all(val);
 	convert_map(val, av[1]);
+	free_all(val);
+	free(val);
 	return (0);
 }

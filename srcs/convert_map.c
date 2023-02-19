@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:57:28 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 17:13:10 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:36:44 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int	len_doc(char *av)
 {
-	int	len;
+	int		len;
 	char	c;
-	int fd;
+	int		fd;
 
 	len = 1;
 	fd = open (av, O_RDONLY);
@@ -36,10 +36,10 @@ void	convert_map(t_player *val, char *av)
 	char	*line;
 	int		len;
 	int		i;
-	
+
 	i = 0;
 	len = len_doc(av);
-	val->map = (char **)malloc((len + 1) * sizeof(char*));
+	val->map = (char **)malloc((len + 1) * sizeof(char *));
 	if (!val->map)
 		return ;
 	fd = open(av, O_RDONLY);
@@ -76,7 +76,7 @@ int	check_file(char *av)
 
 	i = ft_strlen(av) - 4;
 	j = 0;
-	while(av[i])
+	while (av[i])
 		s[j++] = av[i++];
 	if (ft_strcmp(s, ".ber") == 0)
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 17:27:02 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:37:57 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	map_is_rectangular(t_player *val)
 
 int	count_line(char *av)
 {
-	int	len;
+	int		len;
 	char	c;
-	int fd;
+	int		fd;
 
 	len = 0;
 	fd = open (av, O_RDONLY);
@@ -87,42 +87,4 @@ int	check_wall(t_player *val, char *av)
 		i++;
 	}
 	return (1);
-}
-
-
-void co_player(t_player *val)
-{
-	val->x = 0;
-	while (val->map[val->x])
-	{
-		val->y = 0;
-		while (val->map[val->x][val->y])
-		{
-			val->y++;
-			if (val->map[val->x][val->y] == 'P')
-				return ;
-		}
-		val->x++;
-	}
-}
-
-void	fill(int x, int y, t_player *val)
-{
-	if (val->map[x][y] == '1' || val->map[x][y] == 'F')
-		return ;
-	if (val->map[x][y] == 'C')
-		val->coll++;
-	if (val->map[x][y] == 'E')
-		val->exit++;
-	val->map[x][y] = 'F';
-	fill(x - 1, y, val);
-	fill(x + 1, y, val);
-	fill(x, y - 1, val);
-	fill(x, y + 1, val);
-}
-
-void	flood_fill(t_player *val)
-{
-	co_player(val);
-	fill(val->x, val->y, val);	
 }

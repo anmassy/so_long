@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 13:22:31 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 15:57:53 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:35:38 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 void	display_map(t_player *val)
 {
-	int j;
-	int i;
-	
+	int	j;
+	int	i;
+
 	i = 0;
 	while (val->map[i])
 	{

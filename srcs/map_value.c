@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:59:57 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 14:44:10 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/19 17:33:56 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_entry(t_player *val)
 {
 	int	i;
 	int	j;
-	int count;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -41,7 +41,7 @@ int	check_exit(t_player *val)
 {
 	int	i;
 	int	j;
-	int count;
+	int	count;
 
 	i = 0;
 	count = 0;
@@ -94,8 +94,9 @@ int	check_value(t_player *val)
 		j = 0;
 		while (val->map[i][j] && val->map[i][j] != '\n')
 		{
-			if (val->map[i][j] != '1' && val->map[i][j] != '0' && val->map[i][j] != 'E'
-				&& val->map[i][j] != 'P' && val->map[i][j] != 'C')
+			if (val->map[i][j] != '1' && val->map[i][j] != '0'
+				&& val->map[i][j] != 'E' && val->map[i][j] != 'P'
+				&& val->map[i][j] != 'C')
 				return (0);
 			j++;
 		}
