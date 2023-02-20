@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 17:46:00 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/20 15:41:34 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,42 @@ t_player	*init_struct(void)
 	t_player	*val;
 
 	val = malloc(sizeof(t_player));
+	val->map = NULL;
+	val->width = 0;
+	val->height = 0;
 	val->x = 0;
 	val->y = 0;
+	val->count = 0;
 	val->coll = 0;
 	val->exit = 0;
-	val->count = 0;
-	val->map = NULL;
 	return (val);
 }
 
+t_design	*init_struct2(void)
+{
+
+	t_design	*img;
+	img = malloc(sizeof(t_design));
+	img->mlx = NULL;
+	img->window = NULL;
+	img->a = 0;
+	img->b = 0;
+	img->wall = NULL;
+	img->door = NULL;
+	img->terrain = NULL;
+	img->fire = NULL;
+	img->bomb = NULL;
+	return (img);
+}
 int	main(int ac, char **av)
 {
 	int			fd;
 	char		c;
 	t_player	*val;
+	t_design	*img;
 
 	val = init_struct();
+	img = init_struct2();
 	if (ac != 2)
 	{
 		printf("Error\nnumber of arguments is invalide\n");
@@ -52,7 +72,12 @@ int	main(int ac, char **av)
 	solved_map(val);
 	free_all(val);
 	convert_map(val, av[1]);
-	free_all(val);
-	free(val);
+	img->mlx = mlx_init();
+	img->window = mlx_new_window(img->mlx, val->width * 32, (val->height +1) * 32, "so_long");
+	init_sprites(img);
+	item_place(img, val);
+	mlx_loop(img->mlx);
+	// free_all(val);
+	// free(val);
 	return (0);
 }
