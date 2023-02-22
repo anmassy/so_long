@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 12:19:35 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:06:13 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,13 @@ int	main(int ac, char **av)
 	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32, (game->val->height +1) * 32, "so_long");
 	init_sprites(game);
 	item_place(game);
+	game->val->count = 0;
+	mlx_key_hook(game->img->window, find_key, game);
 	mlx_loop(game->img->mlx);
 	// free_all(game);
 	// free(game);
 	return (0);
 }
+
+
+// mkh (win, (*f)(), game)

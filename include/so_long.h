@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 12:17:11 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 18:07:40 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 # define FIRE "./textures/fire.xpm"
 # define TERRAIN "./textures/terrain.xpm"
 # define DOOR "./textures/door.xpm"
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 # include <stdio.h>
 # include <stddef.h>
@@ -86,5 +90,11 @@ void	item_place(t_data *game);
 void	init_struct(t_data *game);
 void	init_struct2(t_data	*game);
 t_data	*init_struct_to_struct(void);
+
+void	up_key(t_data *game);
+void	down_key(t_data *game);
+void	right_key(t_data *game);
+void	left_key(t_data *game);
+int		find_key(int key, t_data *game);
 
 #endif
