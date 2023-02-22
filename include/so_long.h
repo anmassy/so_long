@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 18:07:40 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 19:04:46 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define A 97
 # define S 115
 # define D 100
+# define ESC 65307
 
 # include <stdio.h>
 # include <stddef.h>

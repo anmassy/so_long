@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 18:06:40 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 19:10:33 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ void	left_key(t_data *game)
 
 int	find_key(int key, t_data *game)
 {
-	display_map(game);
 	if (key == W)
 		up_key(game);
 	if (key == A)
@@ -100,5 +99,7 @@ int	find_key(int key, t_data *game)
 		down_key(game);
 	if (key == D)
 		right_key(game);
+	if (key == ESC)
+		exit(0);
 	return (1);
 }

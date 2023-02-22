@@ -6,12 +6,19 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 18:06:13 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 19:14:32 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "include/so_long.h"
+
+int	ft_exit(t_data *game) //fonction free
+{
+	free (game);
+	exit(0);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -43,12 +50,10 @@ int	main(int ac, char **av)
 	init_sprites(game);
 	item_place(game);
 	game->val->count = 0;
+	mlx_hook(game->img->window, 33, 0L, ft_exit, game);
 	mlx_key_hook(game->img->window, find_key, game);
 	mlx_loop(game->img->mlx);
-	// free_all(game);
-	// free(game);
+	free_all(game);
+	free(game);
 	return (0);
 }
-
-
-// mkh (win, (*f)(), game)
