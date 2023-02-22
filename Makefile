@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/02/20 14:19:44 by anmassy          ###   ########.fr        #
+#    Updated: 2023/02/22 11:31:47 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =	srcs/check_map.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
 		srcs/set_mlx.c \
+		srcs/init_struct.c \
 		main.c
 
 OBJ = $(SRC:.c=.o)

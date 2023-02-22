@@ -6,54 +6,20 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/20 15:41:34 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:19:35 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "include/so_long.h"
 
-t_player	*init_struct(void)
-{
-	t_player	*val;
-
-	val = malloc(sizeof(t_player));
-	val->map = NULL;
-	val->width = 0;
-	val->height = 0;
-	val->x = 0;
-	val->y = 0;
-	val->count = 0;
-	val->coll = 0;
-	val->exit = 0;
-	return (val);
-}
-
-t_design	*init_struct2(void)
-{
-
-	t_design	*img;
-	img = malloc(sizeof(t_design));
-	img->mlx = NULL;
-	img->window = NULL;
-	img->a = 0;
-	img->b = 0;
-	img->wall = NULL;
-	img->door = NULL;
-	img->terrain = NULL;
-	img->fire = NULL;
-	img->bomb = NULL;
-	return (img);
-}
 int	main(int ac, char **av)
 {
 	int			fd;
 	char		c;
-	t_player	*val;
-	t_design	*img;
+	t_data		*game;
 
-	val = init_struct();
-	img = init_struct2();
+	game = init_struct_to_struct();
 	if (ac != 2)
 	{
 		printf("Error\nnumber of arguments is invalide\n");
@@ -66,18 +32,18 @@ int	main(int ac, char **av)
 		return (0);
 	}
 	close(fd);
-	convert_map(val, av[1]);
-	if (!full_check(av, val))
+	convert_map(game, av[1]);
+	if (!full_check(av, game))
 		return (0);
-	solved_map(val);
-	free_all(val);
-	convert_map(val, av[1]);
-	img->mlx = mlx_init();
-	img->window = mlx_new_window(img->mlx, val->width * 32, (val->height +1) * 32, "so_long");
-	init_sprites(img);
-	item_place(img, val);
-	mlx_loop(img->mlx);
-	// free_all(val);
-	// free(val);
+	solved_map(game);
+	free_all(game);
+	convert_map(game, av[1]);
+	game->img->mlx = mlx_init();
+	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32, (game->val->height +1) * 32, "so_long");
+	init_sprites(game);
+	item_place(game);
+	mlx_loop(game->img->mlx);
+	// free_all(game);
+	// free(game);
 	return (0);
 }

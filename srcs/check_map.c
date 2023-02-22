@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/20 15:34:01 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:14:43 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,17 @@ int	len_line(char *s)
 	return (len);
 }
 
-int	map_is_rectangular(t_player *val)
+int	map_is_rectangular(t_data *game)
 {
 	int	first_line;
 	int	next_line;
 	int	line;
 
-	first_line = len_line(val->map[0]);
+	first_line = len_line(game->val->map[0]);
 	line = 1;
-	while (val->map[line])
+	while (game->val->map[line])
 	{
-		next_line = len_line(val->map[line]);
+		next_line = len_line(game->val->map[line]);
 		if (next_line != first_line)
 			return (0);
 		line++;
@@ -41,7 +41,7 @@ int	map_is_rectangular(t_player *val)
 	return (1);
 }
 
-int	count_line(char *av, t_player *val)
+int	count_line(char *av, t_data *game)
 {
 	char	c;
 	int		fd;
@@ -50,37 +50,37 @@ int	count_line(char *av, t_player *val)
 	while (read (fd, &c, 1) > 0)
 	{
 		if (c == '\n')
-			val->height++;
+			game->val->height++;
 	}
 	close(fd);
-	return (val->height);
+	return (game->val->height);
 }
 
-int	check_wall(t_player *val, char *av)
+int	check_wall(t_data *game, char *av)
 {
 	int	line;
 	int	i;
 
 	line = 1;
 	i = 0;
-	while (val->map[0][i] && val->map[0][i] != '\n')
+	while (game->val->map[0][i] && game->val->map[0][i] != '\n')
 	{
-		if (val->map[0][i] != '1')
+		if (game->val->map[0][i] != '1')
 			return (0);
 		i++;
 	}
-	val->width = len_line(val->map[line]);
-	while (val->map[line])
+	game->val->width = len_line(game->val->map[line]);
+	while (game->val->map[line])
 	{
-		if (val->map[line][0] != '1' && val->map[line][val->width] != '1')
+		if (game->val->map[line][0] != '1' && game->val->map[line][game->val->width] != '1')
 			return (0);
 		line++;
 	}
-	line = count_line(av, val);
+	line = count_line(av, game);
 	i = 0;
-	while (val->map[line] && val->map[line][i] && val->map[line][i] != '\n')
+	while (game->val->map[line] && game->val->map[line][i] && game->val->map[line][i] != '\n')
 	{
-		if (val->map[line][i] != '1')
+		if (game->val->map[line][i] != '1')
 			return (0);
 		i++;
 	}

@@ -6,46 +6,46 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:37:32 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/19 17:38:05 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:16:22 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line/get_next_line.h"
 #include "../include/so_long.h"
 
-void	co_player(t_player *val)
+void	co_player(t_data *game)
 {
-	val->x = 0;
-	while (val->map[val->x])
+	game->val->x = 0;
+	while (game->val->map[game->val->x])
 	{
-		val->y = 0;
-		while (val->map[val->x][val->y])
+		game->val->y = 0;
+		while (game->val->map[game->val->x][game->val->y])
 		{
-			val->y++;
-			if (val->map[val->x][val->y] == 'P')
+			game->val->y++;
+			if (game->val->map[game->val->x][game->val->y] == 'P')
 				return ;
 		}
-		val->x++;
+		game->val->x++;
 	}
 }
 
-void	fill(int x, int y, t_player *val)
+void	fill(int x, int y, t_data *game)
 {
-	if (val->map[x][y] == '1' || val->map[x][y] == 'F')
+	if (game->val->map[x][y] == '1' || game->val->map[x][y] == 'F')
 		return ;
-	if (val->map[x][y] == 'C')
-		val->coll++;
-	if (val->map[x][y] == 'E')
-		val->exit++;
-	val->map[x][y] = 'F';
-	fill(x - 1, y, val);
-	fill(x + 1, y, val);
-	fill(x, y - 1, val);
-	fill(x, y + 1, val);
+	if (game->val->map[x][y] == 'C')
+		game->val->coll++;
+	if (game->val->map[x][y] == 'E')
+		game->val->exit++;
+	game->val->map[x][y] = 'F';
+	fill(x - 1, y, game);
+	fill(x + 1, y, game);
+	fill(x, y - 1, game);
+	fill(x, y + 1, game);
 }
 
-void	flood_fill(t_player *val)
+void	flood_fill(t_data *game)
 {
-	co_player(val);
-	fill(val->x, val->y, val);
+	co_player(game);
+	fill(game->val->x, game->val->y, game);
 }

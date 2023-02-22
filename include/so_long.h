@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/20 15:34:15 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:17:11 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,34 +47,44 @@ typedef struct s_design
 	void	*bomb;
 }				t_design;
 
-int		count_line(char *av, t_player *val);
-int		len_line(char *s);
-int		map_is_rectangular(t_player *val);
-int		check_wall(t_player *val, char *av);
+typedef struct s_data
+{
+	struct s_player *val;
+	struct s_design *img;
+}				t_data;
 
-void	co_player(t_player *val);
-void	fill(int x, int y, t_player *val);
-void	flood_fill(t_player *val);
+int		count_line(char *av, t_data *game);
+int		len_line(char *s);
+int		map_is_rectangular(t_data *game);
+int		check_wall(t_data *game, char *av);
+
+void	co_player(t_data *game);
+void	fill(int x, int y, t_data *game);
+void	flood_fill(t_data *game);
 
 int		len_doc(char *av);
-void	convert_map(t_player *val, char *av);
+void	convert_map(t_data *game, char *av);
 int		ft_strcmp(char *s1, char *s2);
 int		check_file(char *av);
 
-int		check_entry(t_player *val);
-int		check_exit(t_player *val);
-int		check_connecting(t_player *val);
-int		check_value(t_player *val);
-int		valid_map(t_player *val);
+int		check_entry(t_data *game);
+int		check_exit(t_data *game);
+int		check_connecting(t_data *game);
+int		check_value(t_data *game);
+int		valid_map(t_data *game);
 
-int		full_check(char **av, t_player *val);
-int		solved_map(t_player *val);
-void	free_all(t_player *val);
+int		full_check(char **av, t_data *game);
+int		solved_map(t_data *game);
+void	free_all(t_data *game);
 
-void	display_map(t_player *val);
+void	display_map(t_data *game);
 
-void	init_sprites(t_design *img);
-void	chose_image(t_design *img, t_player *val, int i, int j);
-void	item_place(t_design *img, t_player *val);
+void	init_sprites(t_data *game);
+void	chose_image(t_data *game, int i, int j);
+void	item_place(t_data *game);
+
+void	init_struct(t_data *game);
+void	init_struct2(t_data	*game);
+t_data	*init_struct_to_struct(void);
 
 #endif

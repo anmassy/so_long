@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:57:28 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/20 14:31:37 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/22 12:10:08 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	len_doc(char *av)
 	return (len);
 }
 
-void	convert_map(t_player *val, char *av)
+void	convert_map(t_data *game, char *av)
 {
 	int		fd;
 	char	*line;
@@ -39,18 +39,18 @@ void	convert_map(t_player *val, char *av)
 
 	i = 0;
 	len = len_doc(av);
-	val->map = (char **)malloc((len + 1) * sizeof(char *));
-	if (!val->map)
+	game->val->map = (char **)malloc((len + 1) * sizeof(char *));
+	if (!game->val->map)
 		return ;
 	fd = open(av, O_RDONLY);
 	line = get_next_line(fd);
 	while (line)
 	{
-		val->map[i] = line;
+		game->val->map[i] = line;
 		i++;
 		line = get_next_line(fd);
 	}
-	val->map[i] = NULL;
+	game->val->map[i] = NULL;
 	close(fd);
 }
 
