@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 14:42:49 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 15:38:19 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	down_key(t_data *game)
 
 void	right_key(t_data *game)
 {
-	if (game->val->map[game->val->x][game->val->y +1] == '1')
+	if (game->val->map[game->val->x][game->val->y + 1] == '1')
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
@@ -107,6 +107,7 @@ void	left_key(t_data *game)
 
 int	find_key(int key, t_data *game)
 {
+	count_move(game, key);
 	if (key == W)
 		up_key(game);
 	if (key == A)
@@ -116,6 +117,20 @@ int	find_key(int key, t_data *game)
 	if (key == D)
 		right_key(game);
 	if (key == ESC)
-		exit(0);
+		destroy_map(game);
 	return (1);
+}
+
+void	count_move(t_data *game, int key)
+{
+	static int	move = 1;
+	
+	if (key == W && game->val->map[game->val->x - 1][game->val->y] != '1')
+		printf("%d\n", move++);
+	if (key == A && game->val->map[game->val->x][game->val->y - 1] != '1')
+		printf("%d\n", move++);
+	if (key == S && game->val->map[game->val->x + 1][game->val->y] != '1')
+		printf("%d\n", move++);
+	if (key == D && game->val->map[game->val->x][game->val->y + 1] != '1')
+		printf("%d\n", move++);
 }

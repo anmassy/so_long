@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 14:43:58 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 15:12:46 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	destroy_image(t_data *game)
 	free_all(game);
 }
 
-void destroy_map(t_data *game)
+int destroy_map(t_data *game)
 {
 	mlx_destroy_image(game->img->mlx, game->img->wall);
 	mlx_destroy_image(game->img->mlx, game->img->door);
@@ -104,6 +104,7 @@ void destroy_map(t_data *game)
 	mlx_destroy_display(game->img->mlx);
 	free(game->img->mlx);
 	free_all(game);
+	return(0);
 }
 
 void	create_map(t_data *game, char *av)
@@ -123,7 +124,7 @@ void	create_map(t_data *game, char *av)
 		destroy_image(game);
 	item_place(game);
 	game->val->count = 0;
-	mlx_hook(game->img->window, 33, 0L, free_all, game);
+	mlx_hook(game->img->window, 33, 0L, destroy_map, game);
 	mlx_key_hook(game->img->window, find_key, game);
 	mlx_loop(game->img->mlx);
 }
