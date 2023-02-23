@@ -6,54 +6,42 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 19:14:32 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 12:44:36 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line/get_next_line.h"
 #include "include/so_long.h"
 
-int	ft_exit(t_data *game) //fonction free
+
+int	free_all(t_data *game)
 {
-	free (game);
+	free_map(game);
+	free(game->val);
+	free(game->img);
+	free(game);
 	exit(0);
-	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	int			fd;
-	char		c;
-	t_data		*game;
+	int		fd;
+	char	c;
+	t_data	*game;
 
-	game = init_struct_to_struct();
 	if (ac != 2)
-	{
-		printf("Error\nnumber of arguments is invalide\n");
-		return (0);
-	}
+		check_error("Error\nnumber of arguments is invalide\n");
 	fd = open (av[1], O_RDONLY);
 	if (fd < 0 || read (fd, &c, 1) == 0)
-	{
-		printf("Error\nmap dosen't exist\n");
-		return (0);
-	}
+		check_error("Error\nmap dosen't exist\n");
 	close(fd);
+	game = init_struct_to_struct();
 	convert_map(game, av[1]);
 	if (!full_check(av, game))
-		return (0);
+		free_all(game);
 	solved_map(game);
+	free_map(game);
+	create_map(game, av[1]);
 	free_all(game);
-	convert_map(game, av[1]);
-	game->img->mlx = mlx_init();
-	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32, (game->val->height +1) * 32, "so_long");
-	init_sprites(game);
-	item_place(game);
-	game->val->count = 0;
-	mlx_hook(game->img->window, 33, 0L, ft_exit, game);
-	mlx_key_hook(game->img->window, find_key, game);
-	mlx_loop(game->img->mlx);
-	free_all(game);
-	free(game);
 	return (0);
 }

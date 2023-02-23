@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:36:11 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 12:15:45 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 12:47:52 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,16 @@ int	solved_map(t_data *game)
 {
 	flood_fill(game);
 	if (!valid_map(game))
+	{
 		printf("Error\nthe map can't be solved\n");
+		free_all(game);
+	}
 	else
 		return (0);
 	return (1);
 }
 
-void	free_all(t_data *game)
+void	free_map(t_data *game)
 {
 	int	i;
 
@@ -48,4 +51,10 @@ void	free_all(t_data *game)
 	while (game->val->map[i])
 		free(game->val->map[i++]);
 	free(game->val->map);
+}
+
+void	check_error(char *msg)
+{
+	printf("%s", msg);
+	exit(0);
 }

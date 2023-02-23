@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 19:10:33 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 11:27:25 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,21 @@ void	up_key(t_data *game)
 	if (game->val->map[game->val->x - 1][game->val->y] == '1')
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
-		mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->door, game->val->y * 32, game->val->x * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->door, game->val->y * 32, game->val->x * 32);
 	else
-		mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->terrain, game->val->y * 32, game->val->x * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
 	game->val->x--;
 	if (game->val->map[game->val->x][game->val->y] == 'C')
 	{
 		game->val->map[game->val->x][game->val->y] = '0';
 		game->val->count++;
 	}
-	mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->fire, game->val->y * 32, game->val->x * 32);
-	if (game->val->count == game->val->coll && game->val->map[game->val->x][game->val->y] == 'E')
+	mlx_put_image_to_window(game->img->mlx, game->img->window,
+		game->img->fire, game->val->y * 32, game->val->x * 32);
+	if (game->val->count == game->val->coll
+		&& game->val->map[game->val->x][game->val->y] == 'E')
 		exit(0);
 }
 
@@ -37,56 +41,68 @@ void	down_key(t_data *game)
 	if (game->val->map[game->val->x + 1][game->val->y] == '1')
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
-		mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->door, game->val->y * 32, game->val->x * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->door, game->val->y * 32, game->val->x * 32);
 	else
-		mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->terrain, game->val->y * 32, game->val->x * 32);
-	game->val->x++;	
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
+	game->val->x++;
 	if (game->val->map[game->val->x][game->val->y] == 'C')
 	{
 		game->val->map[game->val->x][game->val->y] = '0';
 		game->val->count++;
 	}
-	mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->fire, game->val->y * 32, game->val->x * 32);
-	if (game->val->count == game->val->coll && game->val->map[game->val->x][game->val->y] == 'E')
+	mlx_put_image_to_window(game->img->mlx, game->img->window,
+		game->img->fire, game->val->y * 32, game->val->x * 32);
+	if (game->val->count == game->val->coll
+		&& game->val->map[game->val->x][game->val->y] == 'E')
 		exit(0);
 }
 
 void	right_key(t_data *game)
 {
-		if (game->val->map[game->val->x][game->val->y +1] == '1')
-			return ;
-		if (game->val->map[game->val->x][game->val->y] == 'E')
-			mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->door, game->val->y * 32, game->val->x * 32);
-		else
-			mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->terrain, game->val->y * 32, game->val->x * 32);
-		game->val->y++;
-		if (game->val->map[game->val->x][game->val->y] == 'C')
-		{
-			game->val->map[game->val->x][game->val->y] = '0';
-			game->val->count++;
-		}
-		mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->fire, game->val->y * 32, game->val->x * 32);
-		if (game->val->count == game->val->coll && game->val->map[game->val->x][game->val->y] == 'E')
-			exit(0);
+	if (game->val->map[game->val->x][game->val->y +1] == '1')
+		return ;
+	if (game->val->map[game->val->x][game->val->y] == 'E')
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->door, game->val->y * 32, game->val->x * 32);
+	else
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
+	game->val->y++;
+	if (game->val->map[game->val->x][game->val->y] == 'C')
+	{
+		game->val->map[game->val->x][game->val->y] = '0';
+		game->val->count++;
+	}
+	mlx_put_image_to_window(game->img->mlx, game->img->window,
+		game->img->fire, game->val->y * 32, game->val->x * 32);
+	if (game->val->count == game->val->coll
+		&& game->val->map[game->val->x][game->val->y] == 'E')
+		exit(0);
 }
 
 void	left_key(t_data *game)
 {
-		if (game->val->map[game->val->x][game->val->y - 1] == '1')
-			return ;
-		if (game->val->map[game->val->x][game->val->y] == 'E')
-			mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->door, game->val->y * 32, game->val->x * 32);
-		else
-			mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->terrain, game->val->y * 32, game->val->x * 32);
-		game->val->y--;
-		if (game->val->map[game->val->x][game->val->y] == 'C')
-		{
-			game->val->map[game->val->x][game->val->y] = '0';
-			game->val->count++;
-		}
-		mlx_put_image_to_window(game->img->mlx, game->img->window, game->img->fire, game->val->y * 32, game->val->x * 32);
-		if (game->val->count == game->val->coll && game->val->map[game->val->x][game->val->y] == 'E')
-			exit(0);
+	if (game->val->map[game->val->x][game->val->y - 1] == '1')
+		return ;
+	if (game->val->map[game->val->x][game->val->y] == 'E')
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->door, game->val->y * 32, game->val->x * 32);
+	else
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
+	game->val->y--;
+	if (game->val->map[game->val->x][game->val->y] == 'C')
+	{
+		game->val->map[game->val->x][game->val->y] = '0';
+		game->val->count++;
+	}
+	mlx_put_image_to_window(game->img->mlx, game->img->window,
+		game->img->fire, game->val->y * 32, game->val->x * 32);
+	if (game->val->count == game->val->coll
+		&& game->val->map[game->val->x][game->val->y] == 'E')
+		exit(0);
 }
 
 int	find_key(int key, t_data *game)

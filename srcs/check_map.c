@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 12:14:43 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 11:28:21 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,15 @@ int	check_wall(t_data *game, char *av)
 	game->val->width = len_line(game->val->map[line]);
 	while (game->val->map[line])
 	{
-		if (game->val->map[line][0] != '1' && game->val->map[line][game->val->width] != '1')
+		if (game->val->map[line][0] != '1'
+			&& game->val->map[line][game->val->width] != '1')
 			return (0);
 		line++;
 	}
 	line = count_line(av, game);
 	i = 0;
-	while (game->val->map[line] && game->val->map[line][i] && game->val->map[line][i] != '\n')
+	while (game->val->map[line]
+		&& game->val->map[line][i] && game->val->map[line][i] != '\n')
 	{
 		if (game->val->map[line][i] != '1')
 			return (0);

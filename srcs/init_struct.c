@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:31:55 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/22 12:17:38 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 11:29:32 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	init_struct2(t_data	*game)
 
 t_data	*init_struct_to_struct(void)
 {
-	t_data *game;
-	
+	t_data	*game;
+
 	game = malloc(sizeof(t_data));
 	if (!game)
 		return (NULL);
