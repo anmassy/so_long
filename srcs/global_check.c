@@ -6,12 +6,18 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:36:11 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 12:47:52 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 17:17:24 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line/get_next_line.h"
 #include "../include/so_long.h"
+
+void	print_error(char *msg)
+{
+	printf("%s", msg);
+	exit(0);
+}
 
 int	full_check(char **av, t_data *game)
 {
@@ -41,20 +47,4 @@ int	solved_map(t_data *game)
 	else
 		return (0);
 	return (1);
-}
-
-void	free_map(t_data *game)
-{
-	int	i;
-
-	i = 0;
-	while (game->val->map[i])
-		free(game->val->map[i++]);
-	free(game->val->map);
-}
-
-void	check_error(char *msg)
-{
-	printf("%s", msg);
-	exit(0);
 }

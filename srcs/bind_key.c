@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 15:38:19 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 17:02:14 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,18 +119,4 @@ int	find_key(int key, t_data *game)
 	if (key == ESC)
 		destroy_map(game);
 	return (1);
-}
-
-void	count_move(t_data *game, int key)
-{
-	static int	move = 1;
-	
-	if (key == W && game->val->map[game->val->x - 1][game->val->y] != '1')
-		printf("%d\n", move++);
-	if (key == A && game->val->map[game->val->x][game->val->y - 1] != '1')
-		printf("%d\n", move++);
-	if (key == S && game->val->map[game->val->x + 1][game->val->y] != '1')
-		printf("%d\n", move++);
-	if (key == D && game->val->map[game->val->x][game->val->y + 1] != '1')
-		printf("%d\n", move++);
 }
