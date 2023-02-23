@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 12:45:14 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 14:34:49 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,11 @@ int		check_connecting(t_data *game);
 int		check_value(t_data *game);
 int		valid_map(t_data *game);
 
-void	init_sprites(t_data *game);
+int		init_sprites(t_data *game);
 void	chose_image(t_data *game, int i, int j);
 void	item_place(t_data *game);
+void	destroy_image(t_data *game);
+void	destroy_map(t_data *game);
 void	create_map(t_data *game, char *av);
 
 void	co_player(t_data *game);

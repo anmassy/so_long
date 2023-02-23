@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 11:27:25 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/02/23 14:42:49 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	up_key(t_data *game)
 		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
-		exit(0);
+		destroy_map(game);
 }
 
 void	down_key(t_data *game)
@@ -56,7 +56,7 @@ void	down_key(t_data *game)
 		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
-		exit(0);
+		destroy_map(game);
 }
 
 void	right_key(t_data *game)
@@ -79,7 +79,7 @@ void	right_key(t_data *game)
 		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
-		exit(0);
+		destroy_map(game);
 }
 
 void	left_key(t_data *game)
@@ -102,7 +102,7 @@ void	left_key(t_data *game)
 		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
-		exit(0);
+		destroy_map(game);
 }
 
 int	find_key(int key, t_data *game)
