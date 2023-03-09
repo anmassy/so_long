@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:09:48 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 17:15:55 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/09 10:23:34 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int ac, char **av)
 		print_error("Error\nmap dosen't exist\n");
 	close(fd);
 	game = init_struct_to_struct();
+	if (!game)
+		return (0);
 	convert_map(game, av[1]);
 	if (!full_check(av, game))
 		free_all(game);

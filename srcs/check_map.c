@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 13:06:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 11:28:21 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/09 12:02:40 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,29 @@ int	count_line(char *av, t_data *game)
 	return (game->val->height);
 }
 
+int	check_mid_wall(t_data *game)
+{
+	int	line;
+	int	temp;
+
+	line = 1;
+	game->val->width = len_line(game->val->map[line]);
+	temp = game->val->width - 1;
+	while (game->val->map[line])
+	{
+		if (game->val->map[line][0] != '1'
+			|| game->val->map[line][temp] != '1')
+			return (0);
+		line++;
+	}
+	return (1);
+}
+
 int	check_wall(t_data *game, char *av)
 {
 	int	line;
 	int	i;
 
-	line = 1;
 	i = 0;
 	while (game->val->map[0][i] && game->val->map[0][i] != '\n')
 	{
@@ -69,14 +86,8 @@ int	check_wall(t_data *game, char *av)
 			return (0);
 		i++;
 	}
-	game->val->width = len_line(game->val->map[line]);
-	while (game->val->map[line])
-	{
-		if (game->val->map[line][0] != '1'
-			&& game->val->map[line][game->val->width] != '1')
-			return (0);
-		line++;
-	}
+	if (!check_mid_wall(game))
+		return (0);
 	line = count_line(av, game);
 	i = 0;
 	while (game->val->map[line]

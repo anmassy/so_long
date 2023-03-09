@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 17:16:25 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/09 10:32:54 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		find_key(int key, t_data *game);
 int		len_line(char *s);
 int		map_is_rectangular(t_data *game);
 int		count_line(char *av, t_data *game);
+int		check_mid_wall(t_data *game);
 int		check_wall(t_data *game, char *av);
 
 int		len_doc(char *av);

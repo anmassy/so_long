@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 17:08:36 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/09 11:56:37 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	create_map(t_data *game, char *av)
 	if (!game->img->mlx)
 		free_all(game);
 	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32,
-			(game->val->height +1) * 32, "so_long");
+			(game->val->height + 1) * 32, "so_long");
 	if (!game->img->window)
 	{
 		free(game->img->mlx);
