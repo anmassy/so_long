@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/03/17 14:45:46 by anmassy          ###   ########.fr        #
+#    Updated: 2023/03/17 14:51:56 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,16 @@ SRC =	get_next_line/get_next_line.c \
 
 SRC_BONUS =	get_next_line/get_next_line.c \
 			get_next_line/get_next_line_utils.c \
-			bonus/srcs/check_map.c \
-			bonus/srcs/convert_map.c \
-			bonus/srcs/map_value.c \
-			bonus/srcs/global_check.c \
-			bonus/srcs/valid_map.c \
-			bonus/srcs/set_mlx.c \
-			bonus/srcs/init_struct.c \
-			bonus/srcs/bind_key.c \
-			bonus/srcs/free_all.c \
-			bonus/srcs/enemie.c \
+			bonus/check_map.c \
+			bonus/convert_map.c \
+			bonus/map_value.c \
+			bonus/global_check.c \
+			bonus/valid_map.c \
+			bonus/set_mlx.c \
+			bonus/init_struct.c \
+			bonus/bind_key.c \
+			bonus/free_all.c \
+			bonus/enemie.c \
 			main.c
 
 OBJ = $(SRC:.c=.o)
