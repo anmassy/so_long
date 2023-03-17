@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/16 13:19:38 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/17 11:43:31 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	up_key(t_data *game)
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->door, game->val->y * 37, game->val->x * 37);
-	else if (game->val->map[game->val->x][game->val->y] == 'N')
+	else if (game->val->x == game->bonus->i && game->val->y == game->bonus->j)
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->bonus->enemie, game->val->y * 37, game->val->x * 37);
 	else
@@ -47,7 +47,7 @@ void	down_key(t_data *game)
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->door, game->val->y * 37, game->val->x * 37);
-	else if (game->val->map[game->val->x][game->val->y] == 'N')
+	else if (game->val->x == game->bonus->i && game->val->y == game->bonus->j)
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->bonus->enemie, game->val->y * 37, game->val->x * 37);
 	else
@@ -74,7 +74,7 @@ void	right_key(t_data *game)
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->door, game->val->y * 37, game->val->x * 37);
-	else if (game->val->map[game->val->x][game->val->y] == 'N')
+	else if (game->val->x == game->bonus->i && game->val->y == game->bonus->j)
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->bonus->enemie, game->val->y * 37, game->val->x * 37);
 	else
@@ -101,7 +101,7 @@ void	left_key(t_data *game)
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->door, game->val->y * 37, game->val->x * 37);
-	else if (game->val->map[game->val->x][game->val->y] == 'N')
+	else if (game->val->x == game->bonus->i && game->val->y == game->bonus->j)
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->bonus->enemie, game->val->y * 37, game->val->x * 37);
 	else

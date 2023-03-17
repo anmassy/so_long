@@ -6,14 +6,12 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:25:01 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/16 14:44:16 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/17 14:34:19 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line/get_next_line.h"
 #include "../include/so_long.h"
-
-// mlx_loop_hook(game->img->mlx, enemie_move, game);
 
 void	co_enemie(t_data *game)
 {
@@ -103,31 +101,10 @@ void	enemie_move_left(t_data *game)
 		game->bonus->enemie, game->bonus->j * 37, game->bonus->i * 37);
 }
 
-int	enemie_move(t_data *game)
-{
-	static int	speed = 0;
-
-	if (speed > 1000)
-	{
-		speed = 0;
-		if (game->bonus->i < game->val->x)
-			enemie_move_down(game);
-		else if (game->bonus->i > game->val->x)
-			enemie_move_up(game);
-		if (game->bonus->j < game->val->y)
-			enemie_move_right(game);
-		else if (game->bonus->j > game->val->y)
-			enemie_move_left(game);
-		return (1);
-	}
-	speed++;
-	return (1);
-}
-
 void	human_life(t_data *game)
 {
 	printf("%d\n", game->val->human);
-	if (game->val->map[game->val->x][game->val->y] == 'N')
+	if (game->val->x == game->bonus->i && game->val->y == game->bonus->j)
 	{
 		game->val->human--;
 		if (game->val->human == 0)
@@ -137,3 +114,41 @@ void	human_life(t_data *game)
 		}
 	}
 }
+
+int	enemie_move(t_data *game)
+{
+	static int	speed = 0;
+
+	if (speed > 40000)
+	{
+		speed = 0;
+		if (game->bonus->i < game->val->x)
+			enemie_move_down(game);
+		else if (game->bonus->i > game->val->x)
+			enemie_move_up(game);
+		else if (game->bonus->j < game->val->y)
+			enemie_move_right(game);
+		else if (game->bonus->j > game->val->y)
+			enemie_move_left(game);
+		return (1);
+	}
+	speed++;
+	return (1);
+}
+
+
+
+
+
+// void	move(t_data *game)
+// {
+// 	int	distance;
+
+// 	distance = 0;
+// 	while (game->val->map[game->val->x][game-val->y] != game->val->map[game->bonus->i][game-bonus->j])
+// 	{
+// 		if (game->val->x + 1 == 0)
+// 			game->val->x + 1 = distance + 1;
+		
+// 	}
+// }
