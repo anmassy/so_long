@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/09 10:32:54 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/16 14:00:37 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 # define SO_LONG_H
 # define WALL "./textures/wall.xpm"
 # define BOMB "./textures/bomb.xpm"
-# define FIRE "./textures/fire.xpm"
-# define TERRAIN "./textures/terrain.xpm"
+# define FIRE "./textures/run.xpm"
+# define TERRAIN "./textures/fond.xpm"
 # define DOOR "./textures/door.xpm"
+# define ENEMIE "./textures/Grass.xpm"
 # define W 119
 # define A 97
 # define S 115
@@ -37,6 +38,7 @@ typedef struct s_player
 	int		count;
 	int		coll;
 	int		exit;
+	int		human;
 }				t_player;
 
 typedef struct s_design
@@ -52,10 +54,18 @@ typedef struct s_design
 	void	*bomb;
 }				t_design;
 
+typedef struct s_bonus
+{
+	void	*enemie;
+	int		i;
+	int		j;
+}				t_bonus;
+
 typedef struct s_data
 {
 	struct s_player	*val;
 	struct s_design	*img;
+	struct s_bonus	*bonus;
 }				t_data;
 
 void	up_key(t_data *game);
@@ -105,5 +115,13 @@ void	count_move(t_data *game, int key);
 void	co_player(t_data *game);
 void	fill(int x, int y, t_data *game);
 void	flood_fill(t_data *game);
+
+void	human_life(t_data *game);
+int	enemie_move(t_data *game);
+void	co_enemie(t_data *game);
+void	enemie_move_down(t_data *game);
+void	enemie_move_up(t_data *game);
+void	enemie_move_right(t_data *game);
+void	enemie_move_right(t_data *game);
 
 #endif

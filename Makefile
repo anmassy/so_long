@@ -6,22 +6,23 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/02/23 17:09:52 by anmassy          ###   ########.fr        #
+#    Updated: 2023/03/16 09:45:09 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	srcs/check_map.c \
-		srcs/convert_map.c \
-		srcs/map_value.c \
-		srcs/global_check.c \
-		srcs/display.c \
-		srcs/valid_map.c \
+SRC =	bonus/srcs/check_map.c \
+		bonus/srcs/convert_map.c \
+		bonus/srcs/map_value.c \
+		bonus/srcs/global_check.c \
+		bonus/srcs/display.c \
+		bonus/srcs/valid_map.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
-		srcs/set_mlx.c \
-		srcs/init_struct.c \
-		srcs/bind_key.c \
-		srcs/free_all.c \
+		bonus/srcs/set_mlx.c \
+		bonus/srcs/init_struct.c \
+		bonus/srcs/bind_key.c \
+		bonus/srcs/free_all.c \
+		bonus/srcs/enemie.c \
 		main.c
 
 OBJ = $(SRC:.c=.o)

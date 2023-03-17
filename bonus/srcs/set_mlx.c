@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/13 10:56:29 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/16 14:10:34 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,10 @@ int	init_sprites(t_data *game)
 			&game->img->a, &game->img->b);
 	if (!game->img->bomb)
 		return (-4);
+	game->bonus->enemie = mlx_xpm_file_to_image(game->img->mlx, ENEMIE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->enemie)
+		return (-5);
 	return (1);
 }
 
@@ -52,6 +56,9 @@ void	chose_image(t_data *game, int i, int j)
 	else if (game->val->map[i][j] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->door, j * 37, i * 37);
+	else if (game->val->map[i][j] == 'N')
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->enemie, j * 37, i * 37);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->terrain, j * 37, i * 37);
@@ -90,9 +97,12 @@ void	create_map(t_data *game, char *av)
 	}
 	if (init_sprites(game) != 1)
 		destroy_image(game);
+	game->val->human = 3;
 	item_place(game);
 	game->val->count = 0;
+	co_enemie(game);
 	mlx_hook(game->img->window, 33, 0L, destroy_map, game);
 	mlx_key_hook(game->img->window, find_key, game);
+	mlx_loop_hook(game->img->mlx, enemie_move, game);
 	mlx_loop(game->img->mlx);
 }
