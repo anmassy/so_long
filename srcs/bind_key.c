@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/13 11:05:17 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:59:32 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	up_key(t_data *game)
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->door, game->val->y * 37, game->val->x * 37);
+			game->img->door, game->val->y * 32, game->val->x * 32);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->terrain, game->val->y * 37, game->val->x * 37);
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
 	game->val->x--;
 	if (game->val->map[game->val->x][game->val->y] == 'C')
 	{
@@ -30,7 +30,7 @@ void	up_key(t_data *game)
 		game->val->count++;
 	}
 	mlx_put_image_to_window(game->img->mlx, game->img->window,
-		game->img->fire, game->val->y * 37, game->val->x * 37);
+		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
 		destroy_map(game);
@@ -42,10 +42,10 @@ void	down_key(t_data *game)
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->door, game->val->y * 37, game->val->x * 37);
+			game->img->door, game->val->y * 32, game->val->x * 32);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->terrain, game->val->y * 37, game->val->x * 37);
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
 	game->val->x++;
 	if (game->val->map[game->val->x][game->val->y] == 'C')
 	{
@@ -53,7 +53,7 @@ void	down_key(t_data *game)
 		game->val->count++;
 	}
 	mlx_put_image_to_window(game->img->mlx, game->img->window,
-		game->img->fire, game->val->y * 37, game->val->x * 37);
+		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
 		destroy_map(game);
@@ -65,10 +65,10 @@ void	right_key(t_data *game)
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->door, game->val->y * 37, game->val->x * 37);
+			game->img->door, game->val->y * 32, game->val->x * 32);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->terrain, game->val->y * 37, game->val->x * 37);
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
 	game->val->y++;
 	if (game->val->map[game->val->x][game->val->y] == 'C')
 	{
@@ -76,7 +76,7 @@ void	right_key(t_data *game)
 		game->val->count++;
 	}
 	mlx_put_image_to_window(game->img->mlx, game->img->window,
-		game->img->fire, game->val->y * 37, game->val->x * 37);
+		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
 		destroy_map(game);
@@ -88,10 +88,10 @@ void	left_key(t_data *game)
 		return ;
 	if (game->val->map[game->val->x][game->val->y] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->door, game->val->y * 37, game->val->x * 37);
+			game->img->door, game->val->y * 32, game->val->x * 32);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->terrain, game->val->y * 37, game->val->x * 37);
+			game->img->terrain, game->val->y * 32, game->val->x * 32);
 	game->val->y--;
 	if (game->val->map[game->val->x][game->val->y] == 'C')
 	{
@@ -99,7 +99,7 @@ void	left_key(t_data *game)
 		game->val->count++;
 	}
 	mlx_put_image_to_window(game->img->mlx, game->img->window,
-		game->img->fire, game->val->y * 37, game->val->x * 37);
+		game->img->fire, game->val->y * 32, game->val->x * 32);
 	if (game->val->count == game->val->coll
 		&& game->val->map[game->val->x][game->val->y] == 'E')
 		destroy_map(game);
@@ -107,6 +107,8 @@ void	left_key(t_data *game)
 
 int	find_key(int key, t_data *game)
 {
+	if (BONUS)
+		human_life(game);
 	count_move(game, key);
 	if (key == W)
 		up_key(game);

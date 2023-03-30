@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:07:41 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/16 13:20:23 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/27 17:37:19 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,14 @@ void	destroy_image(t_data *game)
 		mlx_destroy_image(game->img->mlx, game->img->terrain);
 	if (crash <= -4 && crash >= -5)
 		mlx_destroy_image(game->img->mlx, game->img->fire);
-	if (crash == -5)
+	if (crash <= -5 && crash >= -8)
 		mlx_destroy_image(game->img->mlx, game->bonus->enemie);
+	if (crash <= -6 && crash >= -8)
+		mlx_destroy_image(game->img->mlx, game->bonus->full_life);
+	if (crash <= -7 && crash >= -8)
+		mlx_destroy_image(game->img->mlx, game->bonus->mid_life);
+	if (crash == -8)
+		mlx_destroy_image(game->img->mlx, game->bonus->one_life);
 	mlx_destroy_window(game->img->mlx, game->img->window);
 	free(game->img->mlx);
 	free_all(game);

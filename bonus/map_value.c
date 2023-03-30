@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 12:59:57 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/14 14:46:16 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:36:26 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,28 @@ int	check_value(t_data *game) //bunus
 		i++;
 	}
 	return (1);
+}
+
+int	check_enemie(t_data *game) //bunus
+{
+	int	i;
+	int	j;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (game->val->map[i])
+	{
+		j = 0;
+		while (game->val->map[i][j] && game->val->map[i][j] != '\n')
+		{
+			if (game->val->map[i][j] == 'N')
+				count++;
+			j++;
+		}
+		i++;
+	}
+	return (count);
 }
 
 int	valid_map(t_data *game)

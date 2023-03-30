@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:31:55 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/16 13:17:48 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/27 17:34:27 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ void	init_struct3(t_data *game)
 	game->bonus->enemie = NULL;
 	game->bonus->i = 0;
 	game->bonus->j = 0;
+	game->bonus->full_life = NULL;
+	game->bonus->mid_life = NULL;
+	game->bonus->one_life = NULL;
 }
 
 t_data	*init_struct_to_struct(void)

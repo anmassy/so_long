@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/16 14:10:34 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:54:20 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ int	init_sprites(t_data *game)
 			&game->img->a, &game->img->b);
 	if (!game->bonus->enemie)
 		return (-5);
+	game->bonus->full_life = mlx_xpm_file_to_image(game->img->mlx, FULL_LIFE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->full_life)
+		return (-6);
+	game->bonus->mid_life = mlx_xpm_file_to_image(game->img->mlx, MID_LIFE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->mid_life)
+		return (-7);
+	game->bonus->one_life = mlx_xpm_file_to_image(game->img->mlx, ONE_LIFE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->one_life)
+		return (-8);
 	return (1);
 }
 
@@ -46,22 +58,22 @@ void	chose_image(t_data *game, int i, int j)
 {
 	if (game->val->map[i][j] == '1')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->wall, j * 37, i * 37);
+			game->img->wall, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'P')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->fire, j * 37, i * 37);
+			game->img->fire, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'C')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->bomb, j * 37, i * 37);
+			game->img->bomb, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->door, j * 37, i * 37);
+			game->img->door, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'N')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->bonus->enemie, j * 37, i * 37);
+			game->bonus->enemie, j * 32, i * 32);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->terrain, j * 37, i * 37);
+			game->img->terrain, j * 32, i * 32);
 }
 
 void	item_place(t_data *game)
@@ -88,8 +100,8 @@ void	create_map(t_data *game, char *av)
 	game->img->mlx = mlx_init();
 	if (!game->img->mlx)
 		free_all(game);
-	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 37,
-			(game->val->height + 1) * 37, "so_long");
+	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32,
+			(game->val->height + 1) * 32, "so_long");
 	if (!game->img->window)
 	{
 		free(game->img->mlx);
@@ -103,6 +115,7 @@ void	create_map(t_data *game, char *av)
 	co_enemie(game);
 	mlx_hook(game->img->window, 33, 0L, destroy_map, game);
 	mlx_key_hook(game->img->window, find_key, game);
-	mlx_loop_hook(game->img->mlx, enemie_move, game);
+	if (check_enemie(game) >= 1)
+		mlx_loop_hook(game->img->mlx, enemie_move, game);
 	mlx_loop(game->img->mlx);
 }

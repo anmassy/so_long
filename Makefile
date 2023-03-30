@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/03/17 14:51:56 by anmassy          ###   ########.fr        #
+#    Updated: 2023/03/29 14:11:23 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC =	get_next_line/get_next_line.c \
 		srcs/init_struct.c \
 		srcs/bind_key.c \
 		srcs/display.c \
-		srcs/free_all.c \
+		srcs/free_fonctions.c \
 		main.c
 
 SRC_BONUS =	get_next_line/get_next_line.c \
@@ -34,7 +34,7 @@ SRC_BONUS =	get_next_line/get_next_line.c \
 			bonus/set_mlx.c \
 			bonus/init_struct.c \
 			bonus/bind_key.c \
-			bonus/free_all.c \
+			bonus/free_fonctions.c \
 			bonus/enemie.c \
 			main.c
 
@@ -73,4 +73,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all clean fclean re
+.PHONY : all bonus clean fclean re

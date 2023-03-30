@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/13 10:56:29 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/27 18:10:05 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,19 +42,19 @@ void	chose_image(t_data *game, int i, int j)
 {
 	if (game->val->map[i][j] == '1')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->wall, j * 37, i * 37);
+			game->img->wall, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'P')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->fire, j * 37, i * 37);
+			game->img->fire, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'C')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->bomb, j * 37, i * 37);
+			game->img->bomb, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'E')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->door, j * 37, i * 37);
+			game->img->door, j * 32, i * 32);
 	else
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-			game->img->terrain, j * 37, i * 37);
+			game->img->terrain, j * 32, i * 32);
 }
 
 void	item_place(t_data *game)
@@ -81,8 +81,8 @@ void	create_map(t_data *game, char *av)
 	game->img->mlx = mlx_init();
 	if (!game->img->mlx)
 		free_all(game);
-	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 37,
-			(game->val->height + 1) * 37, "so_long");
+	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32,
+			(game->val->height + 1) * 32, "so_long");
 	if (!game->img->window)
 	{
 		free(game->img->mlx);

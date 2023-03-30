@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/16 14:00:37 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/29 14:05:57 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 # define SO_LONG_H
 # define WALL "./textures/wall.xpm"
 # define BOMB "./textures/bomb.xpm"
-# define FIRE "./textures/run.xpm"
-# define TERRAIN "./textures/fond.xpm"
+# define FIRE "./textures/wall.xpm"
+# define TERRAIN "./textures/terrain.xpm"
 # define DOOR "./textures/door.xpm"
 # define ENEMIE "./textures/Grass.xpm"
+# define ONE_LIFE "./textures/one_life.xpm"
+# define MID_LIFE "./textures/mid_life.xpm"
+# define FULL_LIFE "./textures/full_life.xpm"
 # define W 119
 # define A 97
 # define S 115
 # define D 100
 # define ESC 65307
+
+# ifndef BONUS
+#  define BONUS 1
+# endif
 
 # include <stdio.h>
 # include <stddef.h>
@@ -59,6 +66,9 @@ typedef struct s_bonus
 	void	*enemie;
 	int		i;
 	int		j;
+	void	*full_life;
+	void	*mid_life;
+	void	*one_life;
 }				t_bonus;
 
 typedef struct s_data
@@ -117,11 +127,13 @@ void	fill(int x, int y, t_data *game);
 void	flood_fill(t_data *game);
 
 void	human_life(t_data *game);
-int	enemie_move(t_data *game);
+int		enemie_move(t_data *game);
 void	co_enemie(t_data *game);
 void	enemie_move_down(t_data *game);
 void	enemie_move_up(t_data *game);
 void	enemie_move_right(t_data *game);
 void	enemie_move_right(t_data *game);
+void	life(t_data *game, int human_life);
+int		check_enemie(t_data *game);
 
 #endif
