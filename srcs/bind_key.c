@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 18:06:26 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/29 13:59:32 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 12:28:38 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ void	left_key(t_data *game)
 
 int	find_key(int key, t_data *game)
 {
-	if (BONUS)
-		human_life(game);
 	count_move(game, key);
 	if (key == W)
 		up_key(game);

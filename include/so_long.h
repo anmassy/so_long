@@ -6,30 +6,36 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/29 14:05:57 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:05:43 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define WALL "./textures/wall.xpm"
-# define BOMB "./textures/bomb.xpm"
-# define FIRE "./textures/wall.xpm"
-# define TERRAIN "./textures/terrain.xpm"
-# define DOOR "./textures/door.xpm"
-# define ENEMIE "./textures/Grass.xpm"
-# define ONE_LIFE "./textures/one_life.xpm"
-# define MID_LIFE "./textures/mid_life.xpm"
-# define FULL_LIFE "./textures/full_life.xpm"
+# define WALL "./images/wall.xpm"
+# define PREWALL "./images/prewall.xpm"
+# define BOMB "./images/coll.xpm"
+# define FIRE "./images/player.xpm"
+# define TERRAIN "./images/floor.xpm"
+# define DOOR "./images/exit.xpm"
+# define ENEMIE "./images/enemy.xpm"
+# define LIFE "./images/life.xpm"
+# define NOLIFE "./images/nolife.xpm"
+# define ZERO "./images/0.xpm"
+# define ONE "./images/1.xpm"
+# define TWO "./images/2.xpm"
+# define THREE "./images/3.xpm"
+# define FOUR "./images/4.xpm"
+# define FIVE "./images/5.xpm"
+# define SIX "./images/6.xpm"
+# define SEVEN "./images/7.xpm"
+# define EIGHT "./images/8.xpm"
+# define NINE "./images/9.xpm"
 # define W 119
 # define A 97
 # define S 115
 # define D 100
 # define ESC 65307
-
-# ifndef BONUS
-#  define BONUS 1
-# endif
 
 # include <stdio.h>
 # include <stddef.h>
@@ -59,6 +65,7 @@ typedef struct s_design
 	void	*door;
 	void	*fire;
 	void	*bomb;
+	void	*prewall;
 }				t_design;
 
 typedef struct s_bonus
@@ -66,9 +73,18 @@ typedef struct s_bonus
 	void	*enemie;
 	int		i;
 	int		j;
-	void	*full_life;
-	void	*mid_life;
-	void	*one_life;
+	void	*life;
+	void	*nolife;
+	void	*zero;
+	void	*one;
+	void	*two;
+	void	*three;
+	void	*four;
+	void	*five;
+	void	*six;
+	void	*seven;
+	void	*eight;
+	void	*nine;
 }				t_bonus;
 
 typedef struct s_data
@@ -135,5 +151,8 @@ void	enemie_move_right(t_data *game);
 void	enemie_move_right(t_data *game);
 void	life(t_data *game, int human_life);
 int		check_enemie(t_data *game);
+int		init_sprites_num(t_data *game);
+void	image_num(t_data *game, int i, int num);
+void	ft_update_score(t_data *game, int score);
 
 #endif

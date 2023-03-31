@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   free_fonctions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:07:41 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 17:13:33 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:50:29 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,16 @@ void	destroy_image(t_data *game)
 	int	crash;
 
 	crash = init_sprites(game);
-	if (crash <= -1 && crash >= -4)
+	if (crash <= -1 && crash >= -5)
 		mlx_destroy_image(game->img->mlx, game->img->wall);
-	if (crash <= -2 && crash >= -4)
+	if (crash <= -2 && crash >= -5)
 		mlx_destroy_image(game->img->mlx, game->img->door);
-	if (crash <= -3 && crash >= -4)
+	if (crash <= -3 && crash >= -5)
 		mlx_destroy_image(game->img->mlx, game->img->terrain);
-	if (crash == -4)
+	if (crash <= -4 && crash >= -5)
 		mlx_destroy_image(game->img->mlx, game->img->fire);
+	if (crash == -5)
+		mlx_destroy_image(game->img->mlx, game->img->prewall);
 	mlx_destroy_window(game->img->mlx, game->img->window);
 	free(game->img->mlx);
 	free_all(game);

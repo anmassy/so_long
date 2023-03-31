@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:31:55 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/27 17:34:27 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:02:25 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	init_struct2(t_data	*game)
 	game->img->terrain = NULL;
 	game->img->fire = NULL;
 	game->img->bomb = NULL;
+	game->img->prewall= NULL;
 }
 
 void	init_struct3(t_data *game)
@@ -44,9 +45,18 @@ void	init_struct3(t_data *game)
 	game->bonus->enemie = NULL;
 	game->bonus->i = 0;
 	game->bonus->j = 0;
-	game->bonus->full_life = NULL;
-	game->bonus->mid_life = NULL;
-	game->bonus->one_life = NULL;
+	game->bonus->life = NULL;
+	game->bonus->nolife = NULL;
+	game->bonus->zero = NULL;
+	game->bonus->one = NULL;
+	game->bonus->two = NULL;
+	game->bonus->three = NULL;
+	game->bonus->four = NULL;
+	game->bonus->five = NULL;
+	game->bonus->six = NULL;
+	game->bonus->seven = NULL;
+	game->bonus->eight = NULL;
+	game->bonus->nine = NULL;
 }
 
 t_data	*init_struct_to_struct(void)

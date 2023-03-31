@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/27 18:10:05 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:48:56 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,21 @@ int	init_sprites(t_data *game)
 			&game->img->a, &game->img->b);
 	if (!game->img->bomb)
 		return (-4);
+	game->img->prewall = mlx_xpm_file_to_image(game->img->mlx, PREWALL,
+			&game->img->a, &game->img->b);
+	if (!game->img->prewall)
+		return (-5);
 	return (1);
 }
 
 void	chose_image(t_data *game, int i, int j)
 {
-	if (game->val->map[i][j] == '1')
+	if (!game->val->map[i + 1] || (game->val->map[i + 1] && game->val->map[i][j] == '1' && game->val->map[i + 1][j] != '1'))
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->wall, j * 32, i * 32);
+	else if (game->val->map[i + 1] && game->val->map[i][j] == '1' && game->val->map[i + 1][j] == '1')
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->prewall, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'P')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->fire, j * 32, i * 32);

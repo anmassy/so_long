@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:25:01 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/29 11:37:38 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:22:20 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,26 +104,43 @@ void	enemie_move_left(t_data *game)
 void	life(t_data *game, int human_life) //mettre les images
 {
 	if (human_life == 3)
+	{
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-				game->bonus->full_life, (game->val->width - 3) * 50, game->val->height * 50);
+				game->bonus->life, 0 * 32, (game->val->height + 1) * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+				game->bonus->life, 1 * 32, (game->val->height + 1) * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+				game->bonus->life, 2 * 32, (game->val->height + 1) * 32);
+	}
 	if (human_life == 2)
+	{
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-				game->bonus->mid_life, (game->val->width - 3) * 32, game->val->height * 32);
+				game->bonus->life, 0 * 32, (game->val->height + 1) * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+				game->bonus->life, 1 * 32, (game->val->height + 1) * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+				game->bonus->nolife, 2 * 32, (game->val->height + 1) * 32);
+	}
 	if (human_life == 1)
+	{
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
-				game->bonus->one_life, (game->val->width - 3) * 32, game->val->height * 32);
+				game->bonus->life, 0 * 32, (game->val->height + 1) * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+				game->bonus->nolife, 1 * 32, (game->val->height + 1) * 32);
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+				game->bonus->nolife, 2 * 32, (game->val->height + 1) * 32);
+	}
 }
 
 void	human_life(t_data *game)
 {
-	printf("%d\n", game->val->human);
 	life(game, game->val->human);
 	if (game->val->x == game->bonus->i && game->val->y == game->bonus->j)
 	{
 		game->val->human--;
 		if (game->val->human == 0)
 		{
-			printf("GAME_OVER\n"); //mettre une image de mon personnage mort 
+			printf("GAME_OVER\n");
 			destroy_map(game);
 		}
 	}

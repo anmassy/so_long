@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 09:45:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/29 13:54:20 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 18:38:39 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	init_sprites(t_data *game)
 {
-	game->img->wall = mlx_xpm_file_to_image(game->img->mlx, WALL,
+	game->img->wall = mlx_xpm_file_to_image(game->img->mlx, WALL, 
 			&game->img->a, &game->img->b);
 	if (!game->img->wall)
 		return (0);
@@ -39,26 +39,125 @@ int	init_sprites(t_data *game)
 			&game->img->a, &game->img->b);
 	if (!game->bonus->enemie)
 		return (-5);
-	game->bonus->full_life = mlx_xpm_file_to_image(game->img->mlx, FULL_LIFE,
+	game->bonus->life = mlx_xpm_file_to_image(game->img->mlx, LIFE,
 			&game->img->a, &game->img->b);
-	if (!game->bonus->full_life)
+	if (!game->bonus->life)
 		return (-6);
-	game->bonus->mid_life = mlx_xpm_file_to_image(game->img->mlx, MID_LIFE,
+	game->bonus->nolife = mlx_xpm_file_to_image(game->img->mlx, NOLIFE,
 			&game->img->a, &game->img->b);
-	if (!game->bonus->mid_life)
+	if (!game->bonus->nolife)
 		return (-7);
-	game->bonus->one_life = mlx_xpm_file_to_image(game->img->mlx, ONE_LIFE,
+	game->img->prewall = mlx_xpm_file_to_image(game->img->mlx, PREWALL,
 			&game->img->a, &game->img->b);
-	if (!game->bonus->one_life)
+	if (!game->img->prewall)
 		return (-8);
 	return (1);
 }
 
+int	init_sprites_num(t_data *game)
+{
+	game->bonus->zero = mlx_xpm_file_to_image(game->img->mlx, ZERO,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->zero)
+		return (0);
+	game->bonus->one = mlx_xpm_file_to_image(game->img->mlx, ONE, 
+			&game->img->a, &game->img->b);
+	if (!game->bonus->one)
+		return (-1);
+	game->bonus->two = mlx_xpm_file_to_image(game->img->mlx, TWO,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->two)
+		return (-2);
+	game->bonus->three = mlx_xpm_file_to_image(game->img->mlx, THREE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->three)
+		return (-3);
+	game->bonus->four = mlx_xpm_file_to_image(game->img->mlx, FOUR,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->four)
+		return (-4);
+	game->bonus->five = mlx_xpm_file_to_image(game->img->mlx, FIVE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->five)
+		return (-5);
+	game->bonus->six = mlx_xpm_file_to_image(game->img->mlx, SIX,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->six)
+		return (-6);
+	game->bonus->seven = mlx_xpm_file_to_image(game->img->mlx, SEVEN,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->seven)
+		return (-7);
+	game->bonus->eight = mlx_xpm_file_to_image(game->img->mlx, EIGHT,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->eight)
+		return (-8);
+	game->bonus->nine = mlx_xpm_file_to_image(game->img->mlx, NINE,
+			&game->img->a, &game->img->b);
+	if (!game->bonus->nine)
+		return (-9);
+	return (1);
+}
+
+void	image_num(t_data *game, int i, int num)
+{
+	if (num == 0)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->zero, (game->val->width - 1 - i) * 32, (game->val->height + 1) * 32);
+	if (num == 1)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->one, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 2)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->two, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 3)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->three, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 4)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->four, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 5)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->five, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 6)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->six, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 7)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->seven, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 8)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->eight, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+	if (num == 9)
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->nine, (game->val->width - 1- i) * 32, (game->val->height + 1) * 32);
+}
+
+void	ft_update_score(t_data *game, int score)
+{
+	int	i;
+	int	num;
+
+	i = 0;
+	while (i < 4)
+	{
+		num = score % 10;
+		score /= 10;
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->bonus->zero, (game->val->width - 1 - i) * 32, (game->val->height + 1)* 32);
+		image_num(game, i, num);
+		i++;
+	}
+}
+
 void	chose_image(t_data *game, int i, int j)
 {
-	if (game->val->map[i][j] == '1')
+	if (!game->val->map[i + 1] || (game->val->map[i + 1] && game->val->map[i][j] == '1' && game->val->map[i + 1][j] != '1'))
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->wall, j * 32, i * 32);
+	else if (game->val->map[i + 1] && game->val->map[i][j] == '1' && game->val->map[i + 1][j] == '1')
+		mlx_put_image_to_window(game->img->mlx, game->img->window,
+			game->img->prewall, j * 32, i * 32);
 	else if (game->val->map[i][j] == 'P')
 		mlx_put_image_to_window(game->img->mlx, game->img->window,
 			game->img->fire, j * 32, i * 32);
@@ -101,7 +200,7 @@ void	create_map(t_data *game, char *av)
 	if (!game->img->mlx)
 		free_all(game);
 	game->img->window = mlx_new_window(game->img->mlx, game->val->width * 32,
-			(game->val->height + 1) * 32, "so_long");
+			(game->val->height + 2) * 32, "so_long");
 	if (!game->img->window)
 	{
 		free(game->img->mlx);
@@ -109,13 +208,15 @@ void	create_map(t_data *game, char *av)
 	}
 	if (init_sprites(game) != 1)
 		destroy_image(game);
-	game->val->human = 3;
+	init_sprites_num(game);
+	game->val->human = 3; //bonus
 	item_place(game);
+	ft_update_score(game, 0);
 	game->val->count = 0;
-	co_enemie(game);
+	co_enemie(game); //bonus
 	mlx_hook(game->img->window, 33, 0L, destroy_map, game);
 	mlx_key_hook(game->img->window, find_key, game);
-	if (check_enemie(game) >= 1)
-		mlx_loop_hook(game->img->mlx, enemie_move, game);
+	if (check_enemie(game) >= 1) //bonus
+		mlx_loop_hook(game->img->mlx, enemie_move, game); //bonus
 	mlx_loop(game->img->mlx);
 }

@@ -6,25 +6,25 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:37:32 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/29 13:48:32 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 14:14:51 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../get_next_line/get_next_line.h"
 #include "../include/so_long.h"
 
-void	count_move(t_data *game, int key)
+void	count_move(t_data *game, int key)// achanger
 {
 	static int	move = 1;
 
 	if (key == W && game->val->map[game->val->x - 1][game->val->y] != '1')
-		printf("%d\n", move++);
+		ft_update_score(game, move++);
 	if (key == A && game->val->map[game->val->x][game->val->y - 1] != '1')
-		printf("%d\n", move++);
+		ft_update_score(game, move++);
 	if (key == S && game->val->map[game->val->x + 1][game->val->y] != '1')
-		printf("%d\n", move++);
+		ft_update_score(game, move++);
 	if (key == D && game->val->map[game->val->x][game->val->y + 1] != '1')
-		printf("%d\n", move++);
+		ft_update_score(game, move++);
 }
 
 void	co_player(t_data *game)

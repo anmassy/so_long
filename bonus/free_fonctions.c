@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   free_fonctions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:07:41 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/27 17:37:19 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/03/31 12:25:06 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,20 @@ void	destroy_image(t_data *game)
 	int	crash;
 
 	crash = init_sprites(game);
-	if (crash <= -1 && crash >= -5)
+	if (crash <= -1 && crash >= -7)
 		mlx_destroy_image(game->img->mlx, game->img->wall);
-	if (crash <= -2 && crash >= -5)
+	if (crash <= -2 && crash >= -7)
 		mlx_destroy_image(game->img->mlx, game->img->door);
-	if (crash <= -3 && crash >= -5)
+	if (crash <= -3 && crash >= -7)
 		mlx_destroy_image(game->img->mlx, game->img->terrain);
-	if (crash <= -4 && crash >= -5)
+	if (crash <= -4 && crash >= -7)
 		mlx_destroy_image(game->img->mlx, game->img->fire);
-	if (crash <= -5 && crash >= -8)
+	if (crash <= -5 && crash >= -7)
 		mlx_destroy_image(game->img->mlx, game->bonus->enemie);
-	if (crash <= -6 && crash >= -8)
-		mlx_destroy_image(game->img->mlx, game->bonus->full_life);
-	if (crash <= -7 && crash >= -8)
-		mlx_destroy_image(game->img->mlx, game->bonus->mid_life);
-	if (crash == -8)
-		mlx_destroy_image(game->img->mlx, game->bonus->one_life);
+	if (crash <= -6 && crash >= -7)
+		mlx_destroy_image(game->img->mlx, game->bonus->life);
+	if (crash == -7)
+		mlx_destroy_image(game->img->mlx, game->bonus->nolife);
 	mlx_destroy_window(game->img->mlx, game->img->window);
 	free(game->img->mlx);
 	free_all(game);
