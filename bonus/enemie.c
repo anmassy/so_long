@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:25:01 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/31 13:22:20 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/05 11:33:49 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,34 +149,28 @@ void	human_life(t_data *game)
 int	enemie_move(t_data *game)
 {
 	static int	speed = 0;
+	int	count;
 
-	if (speed > 20000)
+	count = 40000;
+	if (speed == 40000)
+		enemie_move_down(game);
+	else if (speed == count * 2)
+		enemie_move_up(game);
+	else if (speed == count * 3)
+		enemie_move_left(game);
+	else if (speed == count * 4)
+		enemie_move_right(game);
+	else if (speed == count * 5)
+		enemie_move_right(game);
+	else if (speed == count * 6)
+		enemie_move_up(game);
+	else if (speed == count * 7)
+		enemie_move_down(game);
+	else if (speed == count * 8)
 	{
+		enemie_move_left(game);
 		speed = 0;
-		if (game->bonus->i < game->val->x)
-			enemie_move_down(game);
-		else if (game->bonus->i > game->val->x)
-			enemie_move_up(game);
-		else if (game->bonus->j < game->val->y)
-			enemie_move_right(game);
-		else if (game->bonus->j > game->val->y)
-			enemie_move_left(game);
-		return (1);
 	}
 	speed++;
 	return (1);
 }
-
-// void	move(t_data *game) derneire parti a faire 
-
-// {
-// 	int	distance;
-
-// 	distance = 0;
-// 	while (game->val->map[game->val->x][game-val->y] != game->val->map[game->bonus->i][game-bonus->j])
-// 	{
-// 		if (game->val->x + 1 == 0)
-// 			game->val->x + 1 = distance + 1;
-		
-// 	}
-// }
