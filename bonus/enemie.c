@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/16 09:25:01 by anmassy           #+#    #+#             */
-/*   Updated: 2023/04/12 11:37:25 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/12 15:12:58 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,26 +88,17 @@ void	enemie_move_left(t_data *game)
 int	enemie_move(t_data *game)
 {
 	static int	speed = 0;
-	int			count;
 
-	count = 5000;
-	if (speed == 5000)
-		enemie_move_down(game);
-	else if (speed == count * 2)
-		enemie_move_up(game);
-	else if (speed == count * 3)
-		enemie_move_left(game);
-	else if (speed == count * 4)
-		enemie_move_right(game);
-	else if (speed == count * 5)
-		enemie_move_right(game);
-	else if (speed == count * 6)
-		enemie_move_up(game);
-	else if (speed == count * 7)
-		enemie_move_down(game);
-	else if (speed == count * 8)
+	if (speed == 30000)
 	{
-		enemie_move_left(game);
+		if (game->bonus->i > game->val->x)
+			enemie_move_up(game);
+		if (game->bonus->i < game->val->x)
+			enemie_move_down(game);
+		if (game->bonus->j > game->val->y)
+			enemie_move_left(game);
+		if (game->bonus->j < game->val->y)
+			enemie_move_right(game);
 		speed = 0;
 	}
 	speed++;

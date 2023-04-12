@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 11:18:02 by anmassy           #+#    #+#             */
-/*   Updated: 2023/04/12 11:26:49 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/12 15:24:20 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,20 @@ int	destroy_map(t_data *game)
 	mlx_destroy_image(game->img->mlx, game->img->terrain);
 	mlx_destroy_image(game->img->mlx, game->img->fire);
 	mlx_destroy_image(game->img->mlx, game->img->bomb);
+	mlx_destroy_image(game->img->mlx, game->img->prewall);
 	mlx_destroy_image(game->img->mlx, game->bonus->enemie);
+	mlx_destroy_image(game->img->mlx, game->bonus->nolife);
+	mlx_destroy_image(game->img->mlx, game->bonus->life);
+	mlx_destroy_image(game->img->mlx, game->bonus->zero);
+	mlx_destroy_image(game->img->mlx, game->bonus->one);
+	mlx_destroy_image(game->img->mlx, game->bonus->two);
+	mlx_destroy_image(game->img->mlx, game->bonus->three);
+	mlx_destroy_image(game->img->mlx, game->bonus->four);
+	mlx_destroy_image(game->img->mlx, game->bonus->five);
+	mlx_destroy_image(game->img->mlx, game->bonus->six);
+	mlx_destroy_image(game->img->mlx, game->bonus->seven);
+	mlx_destroy_image(game->img->mlx, game->bonus->eight);
+	mlx_destroy_image(game->img->mlx, game->bonus->nine);
 	mlx_destroy_window(game->img->mlx, game->img->window);
 	mlx_destroy_display(game->img->mlx);
 	free(game->img->mlx);
