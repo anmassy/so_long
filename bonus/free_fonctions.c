@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 17:07:41 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/31 12:25:06 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/12 11:19:09 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,43 +30,4 @@ int	free_all(t_data *game)
 	free(game->img);
 	free(game);
 	exit(0);
-}
-
-void	destroy_image(t_data *game)
-{
-	int	crash;
-
-	crash = init_sprites(game);
-	if (crash <= -1 && crash >= -7)
-		mlx_destroy_image(game->img->mlx, game->img->wall);
-	if (crash <= -2 && crash >= -7)
-		mlx_destroy_image(game->img->mlx, game->img->door);
-	if (crash <= -3 && crash >= -7)
-		mlx_destroy_image(game->img->mlx, game->img->terrain);
-	if (crash <= -4 && crash >= -7)
-		mlx_destroy_image(game->img->mlx, game->img->fire);
-	if (crash <= -5 && crash >= -7)
-		mlx_destroy_image(game->img->mlx, game->bonus->enemie);
-	if (crash <= -6 && crash >= -7)
-		mlx_destroy_image(game->img->mlx, game->bonus->life);
-	if (crash == -7)
-		mlx_destroy_image(game->img->mlx, game->bonus->nolife);
-	mlx_destroy_window(game->img->mlx, game->img->window);
-	free(game->img->mlx);
-	free_all(game);
-}
-
-int	destroy_map(t_data *game)
-{
-	mlx_destroy_image(game->img->mlx, game->img->wall);
-	mlx_destroy_image(game->img->mlx, game->img->door);
-	mlx_destroy_image(game->img->mlx, game->img->terrain);
-	mlx_destroy_image(game->img->mlx, game->img->fire);
-	mlx_destroy_image(game->img->mlx, game->img->bomb);
-	mlx_destroy_image(game->img->mlx, game->bonus->enemie);
-	mlx_destroy_window(game->img->mlx, game->img->window);
-	mlx_destroy_display(game->img->mlx);
-	free(game->img->mlx);
-	free_all(game);
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 10:36:11 by anmassy           #+#    #+#             */
-/*   Updated: 2023/02/23 17:17:24 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/12 10:06:43 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	full_check(char **av, t_data *game)
 		printf("Error\nis not surrounded by wall\n");
 	else if (!check_connecting(game) || !check_entry(game) || !check_exit(game))
 		printf("Error\nany values are not present in the map\n");
+	else if (check_enemie(game) == -1)
+		printf("Error\ntoo more enemy in the map\n");
 	else
 		return (1);
 	return (0);

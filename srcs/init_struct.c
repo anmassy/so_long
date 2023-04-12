@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:31:55 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/31 12:27:14 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/12 11:56:59 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,16 @@ t_data	*init_struct_to_struct(void)
 		return (NULL);
 	game->val = malloc(sizeof(t_player));
 	if (!game->val)
+	{
+		free(game);
 		return (NULL);
+	}
 	game->img = malloc(sizeof(t_design));
 	if (!game->img)
+	{
+		free(game);
 		return (NULL);
+	}
 	init_struct(game);
 	init_struct2(game);
 	return (game);

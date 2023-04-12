@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 11:31:55 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/31 18:02:25 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/12 12:04:23 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	init_struct2(t_data	*game)
 	game->img->terrain = NULL;
 	game->img->fire = NULL;
 	game->img->bomb = NULL;
-	game->img->prewall= NULL;
+	game->img->prewall = NULL;
 }
 
 void	init_struct3(t_data *game)
