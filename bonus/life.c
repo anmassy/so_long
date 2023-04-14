@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 09:59:00 by anmassy           #+#    #+#             */
-/*   Updated: 2023/04/12 12:30:49 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/14 11:38:01 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	human_life(t_data *game)
 		game->val->human--;
 		if (game->val->human == 0)
 		{
-			printf("GAME_OVER\n");
+			ft_printf("GAME_OVER\n");
 			destroy_map(game);
 		}
 	}
