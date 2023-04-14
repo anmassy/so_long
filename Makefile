@@ -6,12 +6,18 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 15:12:21 by anmassy           #+#    #+#              #
-#    Updated: 2023/04/12 12:32:39 by anmassy          ###   ########.fr        #
+#    Updated: 2023/04/14 11:09:25 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC =	get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
+		ft_printf/srcs/ft_print_hex.c \
+		ft_printf/srcs/ft_print_nbr.c \
+		ft_printf/srcs/ft_print_other.c \
+		ft_printf/srcs/ft_print_ptr.c \
+		ft_printf/srcs/ft_print_unsigned_nbr.c \
+		ft_printf/srcs/ft_printf.c \
 		srcs/check_map.c \
 		srcs/convert_map.c \
 		srcs/map_value.c \
@@ -26,6 +32,12 @@ SRC =	get_next_line/get_next_line.c \
 
 SRC_BONUS =	get_next_line/get_next_line.c \
 			get_next_line/get_next_line_utils.c \
+			ft_printf/srcs/ft_print_hex.c \
+			ft_printf/srcs/ft_print_nbr.c \
+			ft_printf/srcs/ft_print_other.c \
+			ft_printf/srcs/ft_print_ptr.c \
+			ft_printf/srcs/ft_print_unsigned_nbr.c \
+			ft_printf/srcs/ft_printf.c \
 			bonus/check_map.c \
 			bonus/convert_map.c \
 			bonus/map_value.c \

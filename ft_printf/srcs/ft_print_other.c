@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display.c                                          :+:      :+:    :+:   */
+/*   ft_print_other.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/19 13:22:31 by anmassy           #+#    #+#             */
-/*   Updated: 2023/04/14 10:53:54 by anmassy          ###   ########.fr       */
+/*   Created: 2022/11/16 14:56:48 by anmassy           #+#    #+#             */
+/*   Updated: 2022/11/22 14:46:19 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../get_next_line/get_next_line.h"
-#include "../include/so_long.h"
+#include "../includes/ft_printf.h"
 
-void	display_map(t_data *game)
+int	ft_printchar(int c)
 {
-	int	j;
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_printstr(char *str)
+{
 	int	i;
 
 	i = 0;
-	while (game->val->map[i])
+	if (str == 0)
 	{
-		j = 0;
-		while (game->val->map[i][j])
-		{
-			ft_printf("%c ", game->val->map[i][j]);
-			j++;
-		}
-		ft_printf("\n");
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		ft_printchar(str[i]);
 		i++;
 	}
+	return (i);
+}
+
+int	ft_printpourcent(void)
+{
+	write(1, "%%", 1);
+	return (1);
 }

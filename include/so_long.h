@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 15:10:58 by anmassy           #+#    #+#             */
-/*   Updated: 2023/04/12 12:29:20 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/14 11:00:48 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@
 # include <stdio.h>
 # include <stddef.h>
 # include "../mlx/mlx.h"
+# include "../ft_printf/includes/ft_printf.h"
 
 typedef struct s_player
 {

@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 17:37:32 by anmassy           #+#    #+#             */
-/*   Updated: 2023/03/31 12:27:23 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/04/14 10:57:20 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	count_move(t_data *game, int key)
 	static int	move = 1;
 
 	if (key == W && game->val->map[game->val->x - 1][game->val->y] != '1')
-		printf("%d\n", move++);
+		ft_printf("%d\n", move++);
 	if (key == A && game->val->map[game->val->x][game->val->y - 1] != '1')
-		printf("%d\n", move++);
+		ft_printf("%d\n", move++);
 	if (key == S && game->val->map[game->val->x + 1][game->val->y] != '1')
-		printf("%d\n", move++);
+		ft_printf("%d\n", move++);
 	if (key == D && game->val->map[game->val->x][game->val->y + 1] != '1')
-		printf("%d\n", move++);
+		ft_printf("%d\n", move++);
 }
 
 void	co_player(t_data *game)
